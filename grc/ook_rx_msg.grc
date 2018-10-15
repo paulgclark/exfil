@@ -399,7 +399,7 @@
     </param>
     <param>
       <key>value</key>
-      <value>"tcp://127.0.0.1:5559"</value>
+      <value>"tcp://127.0.0.1:5557"</value>
     </param>
   </block>
   <block>
@@ -426,7 +426,7 @@
     </param>
     <param>
       <key>value</key>
-      <value>"tcp://127.0.0.1:5558"</value>
+      <value>"tcp://127.0.0.1:5556"</value>
     </param>
   </block>
   <block>
@@ -437,7 +437,7 @@
     </param>
     <param>
       <key>value</key>
-      <value>0.05</value>
+      <value>0.5</value>
     </param>
     <param>
       <key>_enabled</key>
@@ -656,7 +656,7 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>0</value>
+      <value>1</value>
     </param>
     <param>
       <key>_coordinate</key>
@@ -707,7 +707,7 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>0</value>
+      <value>1</value>
     </param>
     <param>
       <key>_coordinate</key>
@@ -754,7 +754,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(1416, 792)</value>
+      <value>(1488, 792)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -785,7 +785,7 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>0</value>
+      <value>1</value>
     </param>
     <param>
       <key>_coordinate</key>
@@ -895,7 +895,7 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>0</value>
+      <value>1</value>
     </param>
     <param>
       <key>_coordinate</key>
@@ -4921,7 +4921,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(1392, 932)</value>
+      <value>(1480, 932)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -5059,12 +5059,6 @@
   <connection>
     <source_block_id>digital_pfb_clock_sync_xxx_0</source_block_id>
     <sink_block_id>digital_binary_slicer_fb_0_0</sink_block_id>
-    <source_key>0</source_key>
-    <sink_key>0</sink_key>
-  </connection>
-  <connection>
-    <source_block_id>freq_xlating_fir_filter_xxx_0</source_block_id>
-    <sink_block_id>blocks_complex_to_mag_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>

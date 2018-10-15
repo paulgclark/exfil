@@ -55,3 +55,19 @@ class RxTop(gr.top_block):
         # preamble sync, packet construction and output via ZMQ
         self.packet_build = bb_sync.BuildPacketToZmq(bb_params)
         self.connect((self.mod_sync, 0), (self.packet_build, 0))
+
+        # debug sink; connect this to a flowgraph running the debug
+        # viewer
+        '''
+        if True:
+            self.zeromq_debug_sink = zeromq.push_sink(
+                #gr.sizeof_gr_complex,
+                gr.sizeof_char,
+                1,
+                zmqu.TCP_DEBUG,
+                100,
+                False,
+                32768*8
+            )
+            self.connect((self.mod_sync, 0), (self.zeromq_debug_sink, 0))
+        '''

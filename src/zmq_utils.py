@@ -8,12 +8,15 @@ import struct
 import numpy as np
 
 # the following tcp addresses are used by ZeroMQ pairs
-## for test mode connection between tx and rx flowgraphs
-TCP_TEST = "tcp://127.0.0.1:5559"
-## for connection between tx control code and tx flowgraph
+# for connection between tx control code and tx flowgraph
 TCP_TX = "tcp://127.0.0.1:5555"
-## for connection between rx control code and rx flowgraph
-TCP_RX = "tcp://127.0.0.1:5558"
+# for connection between rx control code and rx flowgraph
+TCP_RX = "tcp://127.0.0.1:5556"
+# for test mode connection between tx and rx flowgraphs
+TCP_TEST = "tcp://127.0.0.1:5557"
+# for connection to a debug port for viewing in grc
+TCP_DEBUG = "tcp://127.0.0.1:5558"
+
 
 # this class creates a pull socket for grabbing float
 # data from a flowgraph
@@ -23,47 +26,27 @@ class zmq_pull_socket():
         self.receiver = self.context.socket(zmq.PULL)
         self.receiver.connect(tcp_str)
 
-
     def poll(self, type_str='f', verbose=0):
         raw_data = self.receiver.recv()
         a = array.array(type_str, raw_data)
         return a
 
-    # incomplete attempt to optimize data flow by
-    # sending bytes instead of floats; flowgraph
-    # changes needed to support this, as well
-    # as all downstream code reworked to use
-    # bytes
-    def poll_short(self, type_str='h', verbose=0):
-        raw_data = self.receiver.recv()
-        a = array.array(type_str, raw_data)
-        npa_s = np.asarray(a)
-        npa_f = npa_s.astype(float)
-        npa_f *= (1.0/10000.0)
-
-        #fmt = "<%dI" % (len(raw_data) //4)
-        #a = list(struct.unpack(fmt, raw_data))
-        return list(npa_f)
-
 
 # this class creates a pull socket for grabbing messages
 # from a flowgraph
 class zmq_pull_msg_socket():
-
     def __init__(self, tcp_str, verbose=0):
         if verbose:
-            print "Opening MSG socket at: " + tcp_str
+            print "Opening PULL MSG socket at: " + tcp_str
         self.context = zmq.Context()
         self.receiver = self.context.socket(zmq.PULL)
         self.receiver.connect(tcp_str)
-
 
     def poll_str(self, verbose=0):
         if verbose:
             print "Polling MSG socket..."
         raw_data = self.receiver.recv()
         return zmq_msg_payload_to_str(raw_data)
-
 
     def poll_bytes(self, verbose=0):
         if verbose:
@@ -74,7 +57,6 @@ class zmq_pull_msg_socket():
 
 # This function takes a raw message and extracts the payload as str
 def zmq_msg_payload_to_str(raw_msg):
-    print "Entered zmq_msg_payload"
     msg = pmt.deserialize_str(raw_msg)
     cdr = pmt.cdr(msg)
 
@@ -86,7 +68,6 @@ def zmq_msg_payload_to_str(raw_msg):
 
 # This function takes a raw message and extracts the payload as bytes
 def zmq_msg_payload_to_bytes(raw_msg):
-    print "Entered zmq_msg_payload"
     msg = pmt.deserialize_str(raw_msg)
     cdr = pmt.cdr(msg)
 
@@ -99,42 +80,76 @@ def zmq_msg_payload_to_bytes(raw_msg):
     return byte_list
 
 
+# this class creates a push socket for sending messages
+# to a flowgraph as well as the methods required to send
+# both byte and string data
+class ZmqPushMsgSocket():
+    def __init__(self, tcp_str, verbose=0):
+        if verbose:
+            print "Opening PUSH MSG socket at: " + tcp_str
+        self.context = zmq.Context.instance()
+        self.socket = self.context.socket(zmq.PUSH)
+        self.socket.bind(tcp_str)
 
-def zmq_send_str(in_str, s):
-    # convert string to byte array
-    in_vec = bytearray(in_str)
-    # then treat like a normal byte list
-    # zmq_send_vec(in_vec, s)
-    zmq_frame_and_send_vec(in_vec, s)
+    # sends raw bytes via ZMQ connection; this fn assumes that
+    # the ZMQ source on the other side is expecting packed bytes
+    # of type unsigned char
+    #
+    def send_raw_bytes(self, byte_list, verbose=0):
+        if verbose:
+            print "Sending Raw Bytes:",
+            print byte_list
 
-def zmq_send_vec(in_list, s):
-    packet_size = len(in_list)
-    data = pmt.make_u8vector(packet_size, 0x00)
-    for i in xrange(packet_size):
-        pmt.u8vector_set(data, i, in_list[i])
-    meta = pmt.PMT_NIL
-    msg = pmt.cons(pmt.PMT_NIL, data)
-    msg = pmt.serialize_str(msg)
-    s.send(msg)
+        # get payload size
+        payload_size = len(byte_list)
+        # build an empty vector
+        data = pmt.make_u8vector(payload_size, 0x00)
+        # fill the vector with unsigned byte data to send
+        for i in xrange(payload_size):
+            pmt.u8vector_set(data, i, byte_list[i])
+        # build the message, which is a pair consisting of
+        # the message metadata (not needed here) and the
+        # information we want to send (the vector)
+        msg = pmt.cons(pmt.PMT_NIL, data)
+        # the message must be serialized as a string so that
+        # it's in the form the gnuradio source expects
+        msg = pmt.serialize_str(msg)
+        self.socket.send(msg)
 
-def zmq_frame_and_send_vec(in_list, s):
-    # build data vector
-    payload_size = len(in_list)
+    # Sends a message framed in the basic gnuradio format:
+    #   - preamble
+    #   - two bytes containing the payload length (MSB)
+    #   - a second copy of the length byte pair
+    #   - the payload
+    #
+    # Both the preamble and the byte_list must be lists of packed,
+    # 8-bit values.
+    def send_framed_bytes(self, preamble, byte_list, verbose=0):
+        if verbose:
+            print "Sending Framed Bytes:",
+            print byte_list
 
-    new_list = [] + preamble_bytes
-    new_list.append(0x00)
-    new_list.append(payload_size)
-    new_list.append(0x00)
-    new_list.append(payload_size)
-    new_list += in_list
+        # get payload size
+        payload_size = len(byte_list)
 
-    packet_size = len(new_list)
-    data = pmt.make_u8vector(packet_size, 0x00)
-    for i in xrange(packet_size):
-        pmt.u8vector_set(data, i, new_list[i])
-    meta = pmt.PMT_NIL
-    msg = pmt.cons(pmt.PMT_NIL, data)
-    msg = pmt.serialize_str(msg)
-    s.send(msg)
+        # build the framed vector (starting/ending with some dead air)
+        framed_list = 10*[0x00] + preamble
+        framed_list.append(0x00)
+        framed_list.append(payload_size)
+        framed_list.append(0x00)
+        framed_list.append(payload_size)
+        framed_list += byte_list
+        framed_list += 10*[0x00]
 
+        # send it
+        self.send_raw_bytes(framed_list, verbose)
 
+    # converts the string to a byte list and sends it via
+    # the preceding functions
+    def send_framed_str(self, preamble, in_str, verbose=0):
+        if verbose:
+            print "Sending Framed String:",
+            print in_str
+
+        byte_list = bytearray(in_str)
+        self.send_framed_bytes(preamble, byte_list, verbose)

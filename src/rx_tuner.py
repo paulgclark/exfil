@@ -3,17 +3,17 @@
 # demodulation, deframing and other functions.
 
 # ADD THIS TO GLOBAL RF FILE (move up one level)
-SDR_SEL_TEST = 0
-SDR_SEL_UHD = 1
-SDR_SEL_HACKRF = 2
-SDR_SEL_LIME = 3
-SDR_SEL_LIME_MINI = 4
+#SDR_SEL_TEST = 0
+#SDR_SEL_UHD = 1
+#SDR_SEL_HACKRF = 2
+#SDR_SEL_LIME = 3
+#SDR_SEL_LIME_MINI = 4
 
 from gnuradio import gr
 from gnuradio import filter
 from gnuradio.filter import firdes
 
-class rx_tuner(gr.hier_block2):
+class TxTuner(gr.hier_block2):
 
     def __init__(self,
                  rf_params,
@@ -21,8 +21,8 @@ class rx_tuner(gr.hier_block2):
                  ):
         gr.hier_block2.__init__(
             self,
-            "RX Tuner Block",
-            gr.io_signature(1, 1, gr.sizeof_gr_complex*1), # single in
+            "TX Tuner Block",
+            gr.io_signature(1, 1, gr.sizeof_char*1),       # single in
             gr.io_signature(1, 1, gr.sizeof_gr_complex*1)  # single out
         )
 

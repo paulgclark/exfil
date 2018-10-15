@@ -63,7 +63,7 @@ class BuildPacketToZmq(gr.hier_block2):
 
         # convert payloads to PDUs
         self.blocks_tagged_stream_to_pdu_0 = \
-            blocks.tagged_stream_to_pdu(blocks.byte_t, 'packet_len')
+            blocks.tagged_stream_to_pdu(blocks.byte_t, self.tag_name)
         self.connect((self.blocks_repack_bits_bb_0, 0),
                      (self.blocks_tagged_stream_to_pdu_0, 0))
 
@@ -72,4 +72,6 @@ class BuildPacketToZmq(gr.hier_block2):
             zeromq.push_msg_sink(
                 zmqu.TCP_RX,
                 100)
+        self.msg_connect((self.blocks_tagged_stream_to_pdu_0, 'pdus'),
+                         (self.zeromq_push_msg_sink_0, 'in'))
 

@@ -1,19 +1,41 @@
 #!/usr/bin/python
-#import zmq_utils
-import zmq
+import zmq_utils as zmqu
+import rf_mgt as rfm
 import sys
 import time
-import pmt
-import numpy as np
-import pylab
 
-tcp_str = "tcp://127.0.0.1:5555"
-preamble_bytes = [0, 0, 0, 0, 0, 0, 0, 0, 85, 85]
-
-
+# setup values
+SAMP_RATE = 2e6
+CENTER_FREQ = 433e6
+FREQ = 432.5e6
+CHANNEL_WIDTH = 20e3
+SYMBOL_TIME = 100e-6
+PREAMBLE_BITS = [0,1,0,1, 0,1,0,1, 0,1,0,1, 0,1,0,1]
+PREAMBLE_BYTES = [0x55, 0x55]
 
 
 if __name__ == "__main__":
+
+    # build rf and bb params objects; these will drive the transmitter
+    # and the receiver
+    rf_params = rfm.RfParams(sdr_hw=rfm.HW_TEST,
+                             samp_rate=SAMP_RATE,
+                             center_freq=CENTER_FREQ,
+                             freq=FREQ,
+                             channel_width=CHANNEL_WIDTH,
+                             mod_scheme=rfm.MOD_OOK,
+                             threshold=0.5,
+                             agc_enable=True,
+                             fsk_dev=0,
+                             psk_const_num=0,
+                             rx_gain=50,
+                             tx_gain=50
+                             )
+    bb_params = rfm.BbParams(encoding=rfm.ENC_NRZ,
+                             preamble=PREAMBLE_BITS,
+                             symbol_time=SYMBOL_TIME
+                             )
+
     # create socket for zmq
     context = zmq.Context.instance()
     zmq_socket = context.socket(zmq.PUSH)
