@@ -38,7 +38,7 @@ class RxTop(gr.top_block):
         self.src = rx_source.rx_source(rf_params)
 
         # tuner
-        self.tuner = rx_tuner.rx_tuner(rf_params, self.working_samp_rate)
+        self.tuner = rx_tuner.RxTuner(rf_params, self.working_samp_rate)
         self.connect((self.src, 0), (self.tuner, 0))
 
         # demod
@@ -55,6 +55,11 @@ class RxTop(gr.top_block):
         # preamble sync, packet construction and output via ZMQ
         self.packet_build = bb_sync.BuildPacketToZmq(bb_params)
         self.connect((self.mod_sync, 0), (self.packet_build, 0))
+
+        # keeps the iq data flowing regardless of zmq situation
+        #self.null_sink = blocks.null_sink(
+        #    sizeof_stream_item=gr.sizeof_char)
+        #self.connect((self.mod_sync, 0), (self.null_sink, 0))
 
         # debug sink; connect this to a flowgraph running the debug
         # viewer

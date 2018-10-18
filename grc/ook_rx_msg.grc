@@ -383,34 +383,7 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(984, 68)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
       <value>0</value>
-    </param>
-    <param>
-      <key>id</key>
-      <value>tcp_addr_iq</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>"tcp://127.0.0.1:5557"</value>
-    </param>
-  </block>
-  <block>
-    <key>variable</key>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
     </param>
     <param>
       <key>_coordinate</key>
@@ -427,6 +400,33 @@
     <param>
       <key>value</key>
       <value>"tcp://127.0.0.1:5556"</value>
+    </param>
+  </block>
+  <block>
+    <key>variable</key>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(984, 68)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>tcp_addr_test</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>"tcp://127.0.0.1:5557"</value>
     </param>
   </block>
   <block>
@@ -4838,7 +4838,7 @@
     <key>zeromq_pull_source</key>
     <param>
       <key>address</key>
-      <value>tcp_addr_iq</value>
+      <value>tcp_addr_test</value>
     </param>
     <param>
       <key>alias</key>

@@ -13,7 +13,7 @@ from gnuradio import gr
 from gnuradio import filter
 from gnuradio.filter import firdes
 
-class TxTuner(gr.hier_block2):
+class RxTuner(gr.hier_block2):
 
     def __init__(self,
                  rf_params,
@@ -21,9 +21,9 @@ class TxTuner(gr.hier_block2):
                  ):
         gr.hier_block2.__init__(
             self,
-            "TX Tuner Block",
-            gr.io_signature(1, 1, gr.sizeof_char*1),       # single in
-            gr.io_signature(1, 1, gr.sizeof_gr_complex*1)  # single out
+            "RX Tuner Block",
+            gr.io_signature(1, 1, gr.sizeof_gr_complex*1),  # single in
+            gr.io_signature(1, 1, gr.sizeof_gr_complex*1)   # single out
         )
 
         ##################################################

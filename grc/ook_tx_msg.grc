@@ -321,7 +321,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(680, 12)</value>
+      <value>(688, 12)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -329,7 +329,7 @@
     </param>
     <param>
       <key>id</key>
-      <value>tcp_addr_iq</value>
+      <value>tcp_addr_test</value>
     </param>
     <param>
       <key>value</key>
@@ -611,7 +611,7 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>1</value>
+      <value>0</value>
     </param>
     <param>
       <key>_coordinate</key>
@@ -803,7 +803,7 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>0</value>
+      <value>1</value>
     </param>
     <param>
       <key>_coordinate</key>
@@ -2248,7 +2248,7 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>1</value>
+      <value>0</value>
     </param>
     <param>
       <key>_coordinate</key>
@@ -2423,7 +2423,7 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>1</value>
+      <value>0</value>
     </param>
     <param>
       <key>_coordinate</key>
@@ -2454,7 +2454,7 @@
     <key>zeromq_push_sink</key>
     <param>
       <key>address</key>
-      <value>tcp_addr_iq</value>
+      <value>tcp_addr_test</value>
     </param>
     <param>
       <key>alias</key>

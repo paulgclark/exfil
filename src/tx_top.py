@@ -14,6 +14,7 @@ import tx_out
 
 from gnuradio import gr
 from gnuradio import zeromq
+from gnuradio import blocks
 
 
 class TxTop(gr.top_block):
@@ -51,6 +52,7 @@ class TxTop(gr.top_block):
         self.tx_out = tx_out.TxOut(rf_params)
         self.connect((self.tuner, 0), (self.tx_out))
 
+        # keeps the iq data flowing regardless of zmq situation
         #self.null_sink = blocks.null_sink(
         #    sizeof_stream_item=gr.sizeof_gr_complex)
         #self.connect((self.mod, 0), (self.null_sink, 0))
