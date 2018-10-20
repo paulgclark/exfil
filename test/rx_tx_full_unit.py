@@ -11,18 +11,12 @@ import rf_mgt as rfm
 import tx_top
 import rx_top
 
-from gnuradio import gr
-from gnuradio import blocks
-from gnuradio import digital
-from gnuradio import zeromq
-from gnuradio.eng_option import eng_option
-
 SAMP_RATE = 2e6
 CENTER_FREQ = 433e6
 FREQ = 432.5e6
 CHANNEL_WIDTH = 20e3
 SYMBOL_TIME = 100e-6
-PREAMBLE_BITS = [0,1,0,1, 0,1,0,1, 0,1,0,1, 0,1,0,1]
+#PREAMBLE_BITS = [0,1,0,1, 0,1,0,1, 0,1,0,1, 0,1,0,1]
 PREAMBLE_BYTES = [0x55, 0x55]
 # send these via the flowgraph
 raw_bytes = [0xC0, 0x3F, 0xEB, 0x00, 0x13]
@@ -44,7 +38,7 @@ if __name__ == "__main__":
                              tx_gain=50
                              )
     bb_params = rfm.BbParams(encoding=rfm.ENC_NRZ,
-                             preamble=PREAMBLE_BITS,
+                             preamble=PREAMBLE_BYTES,
                              symbol_time=SYMBOL_TIME
                              )
 
@@ -64,7 +58,7 @@ if __name__ == "__main__":
     # send some dead air
     #tx_zmq.send_raw_bytes(10000 * [0])
     for i in xrange(8):
-        tx_zmq.send_framed_bytes(preamble=PREAMBLE_BYTES,
+        tx_zmq.send_framed_bytes(preamble=bb_params.preamble_bytes,
                                  byte_list=raw_bytes,
                                  verbose=False)
 
@@ -72,7 +66,7 @@ if __name__ == "__main__":
     while True:
         time.sleep(1)
         # transmit the bytes
-        tx_zmq.send_framed_bytes(preamble=PREAMBLE_BYTES,
+        tx_zmq.send_framed_bytes(preamble=bb_params.preamble_bytes,
                                  byte_list=raw_bytes,
                                  verbose=False)
         time.sleep(1)
@@ -82,7 +76,7 @@ if __name__ == "__main__":
         print rx_data
 
         # transmit a string
-        tx_zmq.send_framed_str(preamble=PREAMBLE_BYTES,
+        tx_zmq.send_framed_str(preamble=bb_params.preamble_bytes,
                                in_str="Testing now...",
                                verbose=False)
         time.sleep(1)

@@ -4,17 +4,20 @@
     <option name="SCOPE_TYPE" value="3" />
   </component>
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/src/rf_mgt.py" line="25" />
+    <bookmark url="file://$PROJECT_DIR$/src/rf_mgt.py" line="55" />
+    <bookmark url="file://$PROJECT_DIR$/src/rf_mgt.py" line="205" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e9f2c8c0-d783-4360-88c3-2d2ebfa78261" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/test/rx_tx_full_unit.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cmd_mgt.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/host.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/xfil.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/host_client_cmd.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/grc/ook_rx_msg.grc" beforeDir="false" afterPath="$PROJECT_DIR$/grc/ook_rx_msg.grc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/grc/ook_tx_msg.grc" beforeDir="false" afterPath="$PROJECT_DIR$/grc/ook_tx_msg.grc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/rx_top.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/rx_top.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/rx_tuner.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/rx_tuner.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tx_top.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/tx_top.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/rf_mgt.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/rf_mgt.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/rx_full_unit.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/rx_full_unit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/rx_tx_full_unit.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/rx_tx_full_unit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/tx_full_unit.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/tx_full_unit.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -33,24 +36,27 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="py" value="48" />
+          <entry key="properties" value="1" />
+          <entry key="py" value="60" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Python" value="48" />
+          <entry key="Python" value="59" />
+          <entry key="Scratch" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="29" />
-          <entry key="py" value="22009" />
+          <entry key="py" value="30773" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="29" />
-          <entry key="Python" value="22009" />
+          <entry key="Python" value="30048" />
+          <entry key="Scratch" value="725" />
         </counts>
       </usages-collector>
     </session>
@@ -62,57 +68,29 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/exfil_host.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="132">
-                  <caret line="36" column="30" selection-start-line="36" selection-start-column="30" selection-end-line="36" selection-end-column="30" />
-                  <folding>
-                    <element signature="e#18#42#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/test/tx_full_unit.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1100">
-                  <caret line="59" column="21" lean-forward="true" selection-start-line="59" selection-start-column="21" selection-end-line="59" selection-end-column="21" />
+                <state relative-caret-position="-351">
+                  <caret line="2" column="20" lean-forward="true" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
                 </state>
               </provider>
             </entry>
           </file>
           <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/test/rx_full_unit.py">
+            <entry file="file://$PROJECT_DIR$/test/host_client_cmd.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="273">
-                  <caret line="28" column="41" selection-start-line="28" selection-start-column="41" selection-end-line="28" selection-end-column="41" />
+                <state relative-caret-position="965">
+                  <caret line="67" column="11" lean-forward="true" selection-start-line="67" selection-start-column="11" selection-end-line="67" selection-end-column="11" />
                   <folding>
-                    <element signature="e#80#90#0" expanded="true" />
+                    <marker date="1540002627569" expanded="true" signature="368:857" ph="..." />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/rx_source.py">
+            <entry file="file://$PROJECT_DIR$/src/cmd_mgt.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="702">
-                  <caret line="26" column="36" selection-start-line="26" selection-start-column="36" selection-end-line="26" selection-end-column="36" />
-                  <folding>
-                    <element signature="e#78#98#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/rx_tuner.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="648">
-                  <caret line="24" column="60" selection-start-line="24" selection-start-column="60" selection-end-line="24" selection-end-column="60" />
-                  <folding>
-                    <element signature="e#342#365#0" expanded="true" />
-                    <marker date="1539830796404" expanded="true" signature="460:466" ph="..." />
-                  </folding>
+                <state relative-caret-position="108">
+                  <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
                 </state>
               </provider>
             </entry>
@@ -121,11 +99,25 @@
       </split-first>
       <split-second>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/rf_mgt.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1080">
-                  <caret line="49" selection-start-line="49" selection-end-line="49" />
+                <state relative-caret-position="3996">
+                  <caret line="169" column="34" selection-start-line="169" selection-start-column="34" selection-end-line="169" selection-end-column="34" />
+                  <folding>
+                    <marker date="1540006849425" expanded="true" signature="7667:7786" ph="..." />
+                    <marker date="1540006849425" expanded="true" signature="7865:7866" ph="..." />
+                    <marker date="1540006849425" expanded="true" signature="7865:7870" ph="..." />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="540">
+                  <caret line="20" column="31" selection-start-line="20" selection-start-column="31" selection-end-line="20" selection-end-column="31" />
                 </state>
               </provider>
             </entry>
@@ -133,8 +125,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/zmq_utils.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="344">
-                  <caret line="53" selection-start-line="53" selection-end-line="53" />
+                <state relative-caret-position="-385">
+                  <caret line="35" column="18" selection-start-line="35" selection-start-column="18" selection-end-line="35" selection-end-column="18" />
                   <folding>
                     <element signature="e#60#70#0" expanded="true" />
                     <marker date="1539581544745" expanded="true" signature="3068:4860" ph="..." />
@@ -143,33 +135,11 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/test/rx_tx_full_unit.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="597">
-                  <caret line="68" column="47" selection-start-line="68" selection-start-column="47" selection-end-line="68" selection-end-column="47" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/tx_out.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="749">
-                  <caret line="46" column="25" selection-start-line="46" selection-start-column="25" selection-end-line="46" selection-end-column="25" />
-                  <folding>
-                    <element signature="e#259#279#0" expanded="true" />
-                    <marker date="1539580400329" expanded="true" signature="439:444" ph="..." />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/tx_top.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="452">
-                  <caret line="57" column="9" selection-start-line="57" selection-start-column="9" selection-end-line="57" selection-end-column="9" />
+                <state relative-caret-position="413">
+                  <caret line="61" column="16" selection-start-line="61" selection-start-column="16" selection-end-line="61" selection-end-column="16" />
                   <folding>
                     <element signature="e#200#224#0" expanded="true" />
                   </folding>
@@ -184,6 +154,27 @@
                   <caret line="61" column="9" selection-start-line="61" selection-start-column="9" selection-end-line="61" selection-end-column="9" />
                   <folding>
                     <marker date="1539893418255" expanded="true" signature="422:428" ph="..." />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/xfil.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="864">
+                  <caret line="45" column="31" selection-start-line="45" selection-start-column="31" selection-end-line="45" selection-end-column="31" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/host.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="1215">
+                  <caret line="46" column="53" selection-start-line="46" selection-start-column="53" selection-end-line="46" selection-end-column="53" />
+                  <folding>
+                    <marker date="1540002791030" expanded="true" signature="1325:1571" ph="..." />
                   </folding>
                 </state>
               </provider>
@@ -219,23 +210,28 @@
         <option value="$PROJECT_DIR$/src/__init__.py" />
         <option value="$PROJECT_DIR$/test/__init__.py" />
         <option value="$PROJECT_DIR$/test/zmq_rx_unit.py" />
-        <option value="$PROJECT_DIR$/src/rf_mgt.py" />
         <option value="$PROJECT_DIR$/src/rx_ook_demod.py" />
         <option value="$PROJECT_DIR$/src/rx_clk_sync.py" />
-        <option value="$PROJECT_DIR$/src/bb_sync.py" />
-        <option value="$PROJECT_DIR$/test/rx_full_unit.py" />
         <option value="$PROJECT_DIR$/test/zmq_tx_unit.py" />
         <option value="$PROJECT_DIR$/src/tx_ook_mod.py" />
         <option value="$PROJECT_DIR$/src/tx_source.py" />
         <option value="$PROJECT_DIR$/src/tx_tuner.py" />
         <option value="$PROJECT_DIR$/src/tx_out.py" />
-        <option value="$PROJECT_DIR$/test/tx_full_unit.py" />
         <option value="$PROJECT_DIR$/src/exfil_host.py" />
         <option value="$PROJECT_DIR$/src/zmq_utils.py" />
         <option value="$PROJECT_DIR$/src/rx_tuner.py" />
-        <option value="$PROJECT_DIR$/src/tx_top.py" />
         <option value="$PROJECT_DIR$/src/rx_top.py" />
+        <option value="$PROJECT_DIR$/src/cmd_mgt.py" />
+        <option value="$PROJECT_DIR$/src/tx_top.py" />
+        <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch.py" />
         <option value="$PROJECT_DIR$/test/rx_tx_full_unit.py" />
+        <option value="$PROJECT_DIR$/test/rx_full_unit.py" />
+        <option value="$PROJECT_DIR$/test/tx_full_unit.py" />
+        <option value="$PROJECT_DIR$/src/bb_sync.py" />
+        <option value="$PROJECT_DIR$/src/host.py" />
+        <option value="$PROJECT_DIR$/src/xfil.py" />
+        <option value="$PROJECT_DIR$/src/rf_mgt.py" />
+        <option value="$PROJECT_DIR$/test/host_client_cmd.py" />
       </list>
     </option>
   </component>
@@ -243,7 +239,7 @@
     <option name="x" value="2123" />
     <option name="y" value="85" />
     <option name="width" value="3111" />
-    <option name="height" value="1673" />
+    <option name="height" value="1920" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -276,6 +272,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="SearchEverywhereHistoryKey" value="binary_slicer_fb&#9;null&#9;null&#10;binary_sli&#9;null&#9;null&#10;binary_slicer&#9;null&#9;null" />
+    <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="Python&#10;Properties" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/test/tx_full_unit.py" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PythonContentEntriesConfigurable" />
@@ -292,7 +289,28 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.TX-RX Full Unit Test">
+  <component name="RunManager" selected="Python.Host to Client Command Decode">
+    <configuration name="Host to Client Command Decode" type="PythonConfigurationType" factoryName="Python">
+      <module name="exfil" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test/host_client_cmd.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="RX Full Test" type="PythonConfigurationType" factoryName="Python">
       <module name="exfil" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -377,6 +395,27 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="scratch" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="exfil" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$APPLICATION_CONFIG_DIR$/scratches" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$APPLICATION_CONFIG_DIR$/scratches/scratch.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="zmq_tx_unit" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="exfil" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -404,9 +443,12 @@
       <item itemvalue="Python.TX Unit Test" />
       <item itemvalue="Python.zmq_tx_unit" />
       <item itemvalue="Python.TX-RX Full Unit Test" />
+      <item itemvalue="Python.Host to Client Command Decode" />
+      <item itemvalue="Python.scratch" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.scratch" />
         <item itemvalue="Python.zmq_tx_unit" />
       </list>
     </recent_temporary>
@@ -425,16 +467,16 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="2123" y="85" width="3111" height="1673" extended-state="0" />
+    <frame x="2123" y="85" width="3111" height="1920" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24060881" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.30395335" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39922228" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32987687" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.4" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3988827" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -469,23 +511,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1755">
           <caret line="65" lean-forward="true" selection-start-line="65" selection-end-line="65" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/bb_sync.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="749">
-          <caret line="73" column="20" lean-forward="true" selection-start-line="73" selection-start-column="20" selection-end-line="73" selection-end-column="20" />
           <folding>
-            <element signature="e#434#457#0" expanded="true" />
+            <element signature="e#271#294#0" expanded="true" />
+            <marker date="1539491271204" expanded="true" signature="544:545" ph="..." />
+            <marker date="1539491271204" expanded="true" signature="544:550" ph="..." />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/zmq_tx_unit.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
         </state>
       </provider>
     </entry>
@@ -493,6 +523,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="432">
           <caret line="16" column="28" lean-forward="true" selection-start-line="16" selection-start-column="28" selection-end-line="16" selection-end-column="28" />
+          <folding>
+            <element signature="e#578#601#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -500,6 +533,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="297">
           <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+          <folding>
+            <element signature="e#195#219#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -514,6 +550,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="722">
           <caret line="47" column="32" lean-forward="true" selection-start-line="47" selection-start-column="32" selection-end-line="47" selection-end-column="32" />
+          <folding>
+            <element signature="e#186#209#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -521,25 +560,8 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="47">
           <caret line="37" column="43" selection-start-line="37" selection-start-column="43" selection-end-line="37" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/exfil_host.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="36" column="30" selection-start-line="36" selection-start-column="30" selection-end-line="36" selection-end-column="30" />
           <folding>
-            <element signature="e#18#42#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/rx_source.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="702">
-          <caret line="26" column="36" selection-start-line="26" selection-start-column="36" selection-end-line="26" selection-end-column="36" />
-          <folding>
-            <element signature="e#78#98#0" expanded="true" />
+            <element signature="e#578#601#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -555,6 +577,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/rx_source.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="702">
+          <caret line="26" column="36" selection-start-line="26" selection-start-column="36" selection-end-line="26" selection-end-column="36" />
+          <folding>
+            <element signature="e#78#98#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/tx_out.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="749">
@@ -566,48 +598,54 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/rf_mgt.py">
+    <entry file="file://$PROJECT_DIR$/src/cmd_mgt.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1080">
-          <caret line="49" selection-start-line="49" selection-end-line="49" />
+        <state relative-caret-position="108">
+          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/tx_full_unit.py">
+    <entry file="file://$PROJECT_DIR$/src/tx_top.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1100">
-          <caret line="59" column="21" lean-forward="true" selection-start-line="59" selection-start-column="21" selection-end-line="59" selection-end-column="21" />
+        <state relative-caret-position="413">
+          <caret line="61" column="16" selection-start-line="61" selection-start-column="16" selection-end-line="61" selection-end-column="16" />
+          <folding>
+            <element signature="e#200#224#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch.properties">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="20" column="31" selection-start-line="20" selection-start-column="31" selection-end-line="20" selection-end-column="31" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test/rx_full_unit.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="28" column="41" selection-start-line="28" selection-start-column="41" selection-end-line="28" selection-end-column="41" />
+        <state relative-caret-position="236">
+          <caret line="41" column="24" selection-start-line="41" selection-start-column="24" selection-end-line="41" selection-end-column="24" />
           <folding>
             <element signature="e#80#90#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/zmq_utils.py">
+    <entry file="file://$PROJECT_DIR$/test/tx_full_unit.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="344">
-          <caret line="53" selection-start-line="53" selection-end-line="53" />
-          <folding>
-            <element signature="e#60#70#0" expanded="true" />
-            <marker date="1539581544745" expanded="true" signature="3068:4860" ph="..." />
-          </folding>
+        <state relative-caret-position="533">
+          <caret line="55" column="41" lean-forward="true" selection-start-line="55" selection-start-column="41" selection-end-line="55" selection-end-column="41" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/tx_top.py">
+    <entry file="file://$PROJECT_DIR$/test/zmq_tx_unit.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="452">
-          <caret line="57" column="9" selection-start-line="57" selection-start-column="9" selection-end-line="57" selection-end-column="9" />
-          <folding>
-            <element signature="e#200#224#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="324">
+          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
         </state>
       </provider>
     </entry>
@@ -623,8 +661,75 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test/rx_tx_full_unit.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="597">
-          <caret line="68" column="47" selection-start-line="68" selection-start-column="47" selection-end-line="68" selection-end-column="47" />
+        <state relative-caret-position="-7">
+          <caret line="19" selection-start-line="19" selection-end-line="19" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/bb_sync.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="783">
+          <caret line="41" lean-forward="true" selection-start-line="41" selection-end-line="41" />
+          <folding>
+            <element signature="e#434#457#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/zmq_utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-385">
+          <caret line="35" column="18" selection-start-line="35" selection-start-column="18" selection-end-line="35" selection-end-column="18" />
+          <folding>
+            <element signature="e#60#70#0" expanded="true" />
+            <marker date="1539581544745" expanded="true" signature="3068:4860" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/exfil_host.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-351">
+          <caret line="2" column="20" lean-forward="true" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/host.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1215">
+          <caret line="46" column="53" selection-start-line="46" selection-start-column="53" selection-end-line="46" selection-end-column="53" />
+          <folding>
+            <marker date="1540002791030" expanded="true" signature="1325:1571" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/xfil.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="864">
+          <caret line="45" column="31" selection-start-line="45" selection-start-column="31" selection-end-line="45" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/rf_mgt.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3996">
+          <caret line="169" column="34" selection-start-line="169" selection-start-column="34" selection-end-line="169" selection-end-column="34" />
+          <folding>
+            <marker date="1540006849425" expanded="true" signature="7667:7786" ph="..." />
+            <marker date="1540006849425" expanded="true" signature="7865:7866" ph="..." />
+            <marker date="1540006849425" expanded="true" signature="7865:7870" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/host_client_cmd.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="965">
+          <caret line="67" column="11" lean-forward="true" selection-start-line="67" selection-start-column="11" selection-end-line="67" selection-end-column="11" />
+          <folding>
+            <marker date="1540002627569" expanded="true" signature="368:857" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>

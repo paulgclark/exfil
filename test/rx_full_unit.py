@@ -20,7 +20,8 @@ CENTER_FREQ = 433e6
 FREQ = 432.5e6
 CHANNEL_WIDTH = 20e3
 SYMBOL_TIME = 100e-6
-PREAMBLE = [0,1,0,1, 0,1,0,1, 0,1,0,1, 0,1,0,1]
+#PREAMBLE = [0,1,0,1, 0,1,0,1, 0,1,0,1, 0,1,0,1]
+PREAMBLE_BYTES = [0x55, 0x55]
 
 if __name__ == "__main__":
 
@@ -39,7 +40,7 @@ if __name__ == "__main__":
                              tx_gain=50
                              )
     bb_params = rfm.BbParams(encoding=rfm.ENC_NRZ,
-                             preamble=PREAMBLE,
+                             preamble=PREAMBLE_BYTES,
                              symbol_time=SYMBOL_TIME
                              )
 

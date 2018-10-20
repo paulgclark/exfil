@@ -22,7 +22,7 @@ CENTER_FREQ = 433e6
 FREQ = 432.5e6
 CHANNEL_WIDTH = 20e3
 SYMBOL_TIME = 100e-6
-PREAMBLE_BITS = [0,1,0,1, 0,1,0,1, 0,1,0,1, 0,1,0,1]
+#PREAMBLE_BITS = [0,1,0,1, 0,1,0,1, 0,1,0,1, 0,1,0,1]
 PREAMBLE_BYTES = [0x55, 0x55]
 # send these via the flowgraph
 raw_bytes = [0xC0, 0x3F, 0xEB, 0x00, 0x13]
@@ -44,7 +44,7 @@ if __name__ == "__main__":
                              tx_gain=50
                              )
     bb_params = rfm.BbParams(encoding=rfm.ENC_NRZ,
-                             preamble=PREAMBLE_BITS,
+                             preamble=PREAMBLE_BYTES,
                              symbol_time=SYMBOL_TIME
                              )
 
@@ -58,11 +58,11 @@ if __name__ == "__main__":
     # send string and byte data
     while True:
         time.sleep(1)
-        msg_push.send_framed_bytes(preamble=PREAMBLE_BYTES,
+        msg_push.send_framed_bytes(preamble=bb_params.preamble_bytes,
                                    byte_list=raw_bytes,
                                    verbose=True)
         time.sleep(1)
-        msg_push.send_framed_str(preamble=PREAMBLE_BYTES,
+        msg_push.send_framed_str(preamble=bb_params.preamble_bytes,
                                  in_str="Testing now...",
                                  verbose=True)
 
