@@ -2,7 +2,9 @@
   <dictionary name="paul">
     <words>
       <w>baseband</w>
+      <w>recv</w>
       <w>samp</w>
+      <w>uplink</w>
       <w>zmq</w>
     </words>
   </dictionary>

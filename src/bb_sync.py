@@ -20,7 +20,8 @@ import zmq_utils as zmqu
 class BuildPacketToZmq(gr.hier_block2):
 
     def __init__(self,
-                 bb_params):
+                 bb_params,
+                 tcp_addr):
         gr.hier_block2.__init__(
             self,
             "Build and Send Pkt",
@@ -30,6 +31,7 @@ class BuildPacketToZmq(gr.hier_block2):
 
         # parameters
         self.bb_params = bb_params
+        self.tcp_addr = tcp_addr
 
         # variables
         self.tag_name = "packet_len"
@@ -70,7 +72,7 @@ class BuildPacketToZmq(gr.hier_block2):
         # send PDU to zmq sink
         self.zeromq_push_msg_sink_0 = \
             zeromq.push_msg_sink(
-                zmqu.TCP_RX,
+                self.tcp_addr,
                 100)
         self.msg_connect((self.blocks_tagged_stream_to_pdu_0, 'pdus'),
                          (self.zeromq_push_msg_sink_0, 'in'))

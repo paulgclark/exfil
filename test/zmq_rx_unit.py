@@ -22,7 +22,7 @@ class TestFlowgraph(gr.top_block):
         ##################################################
         # Variables
         ##################################################
-        self.tcp_addr_msg_out = zmu.TCP_RX
+        self.tcp_addr_msg_out = zmu.TCP_RX_XFIL
         self.samp_rate = samp_rate = 1e3
         self.preamble = (85,85,0,6,0,6,80,73,80,73,70,90,0,0,0,0,0,0,0)
 
@@ -77,7 +77,7 @@ if __name__ == "__main__":
     fg.start()
 
     # setup the zmq socket
-    socket = zmu.zmq_pull_msg_socket(zmu.TCP_RX)
+    socket = zmu.ZmqPullMsgSocket(zmu.TCP_RX_XFIL)
 
     # poll the socket and acquire the data
     for _ in xrange(3):

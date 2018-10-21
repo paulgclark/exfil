@@ -21,12 +21,16 @@ class TxTop(gr.top_block):
 
     def __init__(self,
                  rf_params,
-                 bb_params):
-        gr.top_block.__init__(self, "rx_top")
+                 bb_params,
+                 tcp_addr,
+                 tcp_test):
+        gr.top_block.__init__(self, "tx_top")
 
         # parameters
         self.rf_params = rf_params
         self.bb_params = bb_params
+        self.tcp_addr = tcp_addr
+        self.tcp_addr_test = tcp_test
 
         # variables
         self.samp_rate = rf_params.samp_rate
@@ -34,22 +38,25 @@ class TxTop(gr.top_block):
         self.working_samp_rate = 10/bb_params.symbol_time
 
         # baseband source
-        self.bb_src = tx_source.TxSource(rf_params)
+        self.bb_src = tx_source.TxSource(rf_params=self.rf_params,
+                                         tcp_addr=self.tcp_addr)
 
         # modulation
         if rf_params.mod_scheme == rfm.MOD_OOK:
-            self.mod = tx_ook_mod.TxOokMod(rf_params, bb_params)
+            self.mod = tx_ook_mod.TxOokMod(rf_params=self.rf_params,
+                                           bb_params=self.bb_params)
             self.connect((self.bb_src, 0), (self.mod, 0))
         #elif rf_params.mod_scheme == rfm.MOD_FSK
         #    self.mod_sync = rx_fsk_demod.rx_fsk_demod(rf_params)
         #    self.connect((self.tuner, 0), (self.mod_only, 0))
 
         # tuner
-        self.tuner = tx_tuner.TxTuner(rf_params)
+        self.tuner = tx_tuner.TxTuner(rf_params=self.rf_params)
         self.connect((self.mod, 0), (self.tuner, 0))
 
         # transmit output
-        self.tx_out = tx_out.TxOut(rf_params)
+        self.tx_out = tx_out.TxOut(rf_params=self.rf_params,
+                                   tcp_test=self.tcp_addr_test)
         self.connect((self.tuner, 0), (self.tx_out))
 
         # keeps the iq data flowing regardless of zmq situation

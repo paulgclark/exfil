@@ -17,7 +17,7 @@ raw_bytes = [0xC0, 0x3F, 0xEB, 0x00, 0x13]
 
 if __name__ == "__main__":
     # setup the zmq socket
-    msg_push = zmu.ZmqPushMsgSocket(zmu.TCP_TX)
+    msg_push = zmu.ZmqPushMsgSocket(zmu.TCP_TX_HOST)
 
     # send string and byte data
     while True:

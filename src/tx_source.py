@@ -14,7 +14,8 @@ from gnuradio import zeromq
 class TxSource(gr.hier_block2):
 
     def __init__(self,
-                 rf_params):
+                 rf_params,
+                 tcp_addr):
         gr.hier_block2.__init__(
             self,
             "TX Source Block",
@@ -24,10 +25,11 @@ class TxSource(gr.hier_block2):
 
         # parameters
         self.rf_params = rf_params
+        self.tcp_addr = tcp_addr
 
         # instantiate the zmq source
         self.bb_src = zeromq.pull_msg_source(
-                zmq.TCP_TX,
+                self.tcp_addr,
                 100)
 
         # convert the message PDU to a stream with tags

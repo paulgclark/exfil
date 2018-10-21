@@ -43,16 +43,16 @@ if __name__ == "__main__":
                              )
 
     # instance and start the tx flowgraph
-    fg_tx = tx_top.TxTop(rf_params, bb_params)
+    fg_tx = tx_top.TxTop(rf_params, bb_params, zmu.TCP_TX_HOST)
     fg_tx.start()
     # setup the zmq socket to feed the transmitter
-    tx_zmq = zmu.ZmqPushMsgSocket(zmu.TCP_TX)
+    tx_zmq = zmu.ZmqPushMsgSocket(zmu.TCP_TX_HOST)
 
     # instance and start the rx flowgraph
-    fg_rx = rx_top.RxTop(rf_params, bb_params)
+    fg_rx = rx_top.RxTop(rf_params, bb_params, zmu.TCP_RX_XFIL)
     fg_rx.start()
     # setup the zmq socket to grab data from the receiver
-    rx_zmq = zmu.zmq_pull_msg_socket(zmu.TCP_RX)
+    rx_zmq = zmu.ZmqPullMsgSocket(zmu.TCP_RX_XFIL)
 
     # priming the zmq receive socket (don't understand this fully...)
     # send some dead air

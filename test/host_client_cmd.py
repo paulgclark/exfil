@@ -20,12 +20,14 @@ if __name__ == "__main__":
     # instance the host and xfil
     host = host.hostClass(init_rf_params=rf_params,
                           init_bb_params=bb_params,
-                          tcp_tx=zmu.TCP_TX)
+                          tcp_tx=zmu.TCP_TX_HOST,
+                          tcp_rx=zmu.TCP_RX_HOST)
     host.set_uplink_config(rf_params=rf_params,
                            bb_params=bb_params)
     xfil = xfil.xfilClass(init_rf_params=rf_params,
                           init_bb_params=bb_params,
-                          tcp_rx=zmu.TCP_RX)
+                          tcp_rx=zmu.TCP_RX_XFIL,
+                          tcp_tx=zmu.TCP_TX_XFIL)
 
     cmd_list = [1,2,3,4,5,6,7]
 
@@ -39,11 +41,11 @@ if __name__ == "__main__":
     bb_params2 = rfm.BbParams()
 
     # send string and byte data
-    while True:
-        time.sleep(1)
+    for i in xrange(5):
+        time.sleep(0.2)
         # transmit the bytes
         host.send_uplink_config()
-        time.sleep(1)
+        time.sleep(0.2)
         # receive the bytes
         print "Received bytes:",
         rx_data = xfil.recv_command()
@@ -55,7 +57,9 @@ if __name__ == "__main__":
             print "Transmission too short, no decoding attempted"
         else:
             rf_params2.restore_from_cmd(rx_data[0:14])
-            bb_params2.restore_from_cmd(rx_data[14:])
+            print rx_data[0:14]
+            bb_params2.restore_from_cmd(rx_data[13:])
+            print rx_data[13:]
             rf_params2.print_vals()
             bb_params2.print_vals()
 

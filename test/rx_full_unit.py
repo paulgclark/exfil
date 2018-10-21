@@ -45,11 +45,11 @@ if __name__ == "__main__":
                              )
 
     # instance and start the flowgraph
-    fg = rx_top.RxTop(rf_params, bb_params)
+    fg = rx_top.RxTop(rf_params, bb_params, zmu.TCP_RX_XFIL)
     fg.start()
 
     # setup the zmq socket
-    socket = zmu.zmq_pull_msg_socket(zmu.TCP_RX)
+    socket = zmu.ZmqPullMsgSocket(zmu.TCP_RX_XFIL)
 
     # poll the socket and acquire the data
     for _ in xrange(3):

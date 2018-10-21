@@ -49,11 +49,11 @@ if __name__ == "__main__":
                              )
 
     # instance and start the flowgraph
-    fg = tx_top.TxTop(rf_params, bb_params)
+    fg = tx_top.TxTop(rf_params, bb_params, zmu.TCP_TX_HOST)
     fg.start()
 
     # setup the zmq socket
-    msg_push = zmu.ZmqPushMsgSocket(zmu.TCP_TX)
+    msg_push = zmu.ZmqPushMsgSocket(zmu.TCP_TX_HOST)
 
     # send string and byte data
     while True:

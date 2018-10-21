@@ -16,7 +16,8 @@ from gnuradio import uhd
 
 class TxOut(gr.hier_block2):
     def __init__(self,
-                 rf_params):
+                 rf_params,
+                 tcp_test):
         gr.hier_block2.__init__(
             self,
             "TX Output",
@@ -26,6 +27,7 @@ class TxOut(gr.hier_block2):
 
         # parameters
         self.rf_params = rf_params
+        self.tcp_test = tcp_test
 
         # variables
         self.sdr_hw = rf_params.sdr_hw
@@ -44,7 +46,7 @@ class TxOut(gr.hier_block2):
             self.zeromq_push_sink_0 = zeromq.push_sink(
                 gr.sizeof_gr_complex,
                 1,
-                zmq.TCP_TEST,
+                self.tcp_test,
                 100,
                 False,
                 -1)

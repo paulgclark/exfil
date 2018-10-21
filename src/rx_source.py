@@ -10,7 +10,8 @@ from gnuradio import zeromq
 class rx_source(gr.hier_block2):
 
     def __init__(self,
-                 rf_params):
+                 rf_params,
+                 tcp_test):
         gr.hier_block2.__init__(
             self,
             "RX Source Block",
@@ -20,6 +21,7 @@ class rx_source(gr.hier_block2):
 
         # parameters
         self.rf_params = rf_params
+        self.tcp_test = tcp_test
 
         # instantiate the IQ source
         ## use the ZeroMQ Pull Source for loopback connection to TX
@@ -27,7 +29,7 @@ class rx_source(gr.hier_block2):
             self.src = zeromq.pull_source(
                 gr.sizeof_gr_complex,
                 1,
-                zmqu.TCP_TEST,
+                self.tcp_test,
                 100,
                 False,
                 -1)

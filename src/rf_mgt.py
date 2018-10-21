@@ -40,7 +40,7 @@ DEF_CHANNEL_WIDTH = 20e3
 DEF_MOD_SCHEME = MOD_OOK
 DEF_THRESHOLD = 0.5
 DEF_AGC_ENABLE = True
-DEF_FSK_DEV = 0
+DEF_FSK_DEV = 0.0
 DEF_PSK_CONST_NUM = 0
 DEF_RX_GAIN = 50
 DEF_TX_GAIN = 50
@@ -48,6 +48,19 @@ DEF_TX_GAIN = 50
 DEF_PREAMBLE_BYTES = [0x55, 0x55]
 DEF_ENCODING = ENC_NRZ
 DEF_SYMBOL_TIME = 100e-6
+
+# this payload is used to clear the zmq pipe, it is typically ignored
+DUMMY_PAYLOAD = [0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 0, 0]
+DUMMY_PAYLOAD = [1, 2, 3, 4, 5, 6, 7]
+# this is the number of identical commands required before it is acted on
+CMD_REP_REQ = 1
+TX_REP = 1
+
+# use this value as a designator for the payload type (not implemented)
+#CMD_ID = 0xD7
+#DATA_ID = 0xC3
+#TEST_ID = 0xEE
+
 
 class RfParams():
     def __init__(self,
@@ -106,6 +119,8 @@ class RfParams():
 
     # take the command bytes and build a record from them
     def restore_from_cmd(self, cmd_bytes):
+        print "**********cmd_bytes",
+        print cmd_bytes
         self.sdr_hw = restore_from_scaled(cmd_bytes[0], S_NONE)
         self.samp_rate = restore_from_scaled(cmd_bytes[1], S_MEG)
         # we encoded center_freq in a special way (see above)
@@ -118,7 +133,7 @@ class RfParams():
         self.transition_width = restore_from_scaled(cmd_bytes[5], S_FILT)
         self.mod_scheme = restore_from_scaled(cmd_bytes[6], S_NONE)
         self.threshold = restore_from_scaled(cmd_bytes[7], S_THRESH)
-        self.agc_enable = restore_from_scaled(cmd_bytes[8], S_NONE)
+        self.agc_enable = restore_from_scaled(cmd_bytes[8], S_BOOL)
         self.fsk_dev = restore_from_scaled(cmd_bytes[9], S_FILT)
         self.psk_const_num = restore_from_scaled(cmd_bytes[10], S_NONE)
         self.rx_gain = restore_from_scaled(cmd_bytes[11], S_NONE)
@@ -126,7 +141,6 @@ class RfParams():
 
 
     def print_vals(self):
-        print "\n"
         print "SDR HW: {}".format(self.sdr_hw)
         print "samp rate: {} MHz".format(self.samp_rate)
         print "center freq: {} MHz".format(self.center_freq)
@@ -140,7 +154,6 @@ class RfParams():
         print "psk const #: {}".format(self.psk_const_num)
         print "rx gain: {} dB".format(self.rx_gain)
         print "tx gain: {} dB".format(self.tx_gain)
-        print "\n"
 
 
 class BbParams():
@@ -149,10 +162,15 @@ class BbParams():
                  encoding = DEF_ENCODING,
                  symbol_time = DEF_SYMBOL_TIME,
                  ):
-        self.preamble_bytes = preamble
-        self.preamble = unpack_list(preamble)
+        self.set_preamble(preamble_bytes=preamble)
         self.encoding = encoding
         self.symbol_time = symbol_time
+
+    # use this rather than set the preamble directly, as it takes care
+    # of keeping the bit and byte-wise versions correct
+    def set_preamble(self, preamble_bytes):
+        self.preamble_bytes = preamble_bytes
+        self.preamble = unpack_list(preamble_bytes)
 
     # output command bytes corresponding to current values; the goal
     # is to convert each field into an integer ranging from 0-256
@@ -176,27 +194,24 @@ class BbParams():
 
 
     def print_vals(self):
-        print "\n"
         print "preamble: ",
         print self.preamble_bytes
         print "encoding: {}".format(self.encoding)
         print "symbol time: {} us".format(self.symbol_time)
-        print "\n"
-
 
 
 # converts an input float to an integer factor of the provided
 # scaling
-def scale_to_int(float_val, scale_factor):
+def scale_to_int(input_val, scale_factor):
     if scale_factor == S_BOOL:
-        return 1 if True else 0
+        return 1 if input_val else 0
     else:
-        return int(1.0*float_val/scale_factor)
+        return int(1.0*input_val/scale_factor)
 
 # converts an input byte to the scaled float or int
 def restore_from_scaled(byte_val, scale_factor):
     if scale_factor == S_BOOL:
-        return True if byte_val > 1 else False
+        return True if byte_val == 1 else False
     elif scale_factor == S_NONE:
         return int(byte_val)
     else:
