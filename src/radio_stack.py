@@ -107,6 +107,11 @@ class RadioStack():
             byte_list=combo_bytes,
             verbose=self.verbose)
 
+    # uses zmq interface to send string data to tx fg
+    def send_str(self, tx_str):
+        byte_list = bytearray(tx_str)
+        self.send_bytes(byte_list)
+
     # receives raw bytes from rx flowgraph via zmq; it then checks
     # the last byte, assuming that it contains an arithmetic checksum
     def recv_bytes(self, verbose=False):
@@ -122,9 +127,18 @@ class RadioStack():
 
         # if we have a valid payload, else return empty list
         if cs_computed == raw_data[-1]:
-            return raw_data[:-1]
+            #if the payload is the dummy payload, ignore it
+            if raw_data[:-1] != rfm.DUMMY_PAYLOAD:
+                return raw_data[:-1]
+            else:
+                return []
         else:
             return []
+
+    # converts received bytes to string
+    def recv_str(self, verbose=False):
+        raw_bytes = bytearray(self.recv_bytes(verbose=verbose))
+        return raw_bytes.decode()
 
     # timeout handler function
     def handler(self, signum, frame):
