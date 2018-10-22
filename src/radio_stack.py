@@ -8,6 +8,7 @@ import zmq_utils as zmu
 import rf_mgt as rfm
 import tx_top
 import rx_top
+import signal
 
 class RadioStack():
     def __init__(self,
@@ -124,6 +125,25 @@ class RadioStack():
             return raw_data[:-1]
         else:
             return []
+
+    # timeout handler function
+    def handler(self, signum, frame):
+        raise Exception("Receiver timeout...")
+
+    # the host may attempt to request data from the xfil box but may
+    # not receive it; to keep it from hanging, it should use this
+    # function which adds a timeout capability; the xfil box should use
+    # the recv_bytes above, without timeout
+    # Note: default is 10 seconds
+    def recv_bytes_timeout(self, timeout=10, verbose=False):
+        # define a signal that implements the timeout alarm
+        signal.signal(signal.SIGALRM, self.handler)
+        signal.alarm(10)
+        try:
+            return_val = self.recv_bytes()
+        except Exception, exc:
+            return_val = []
+        return return_val
 
     # to keep from operating tx and rx simultaneously
     def rx_shutdown(self):

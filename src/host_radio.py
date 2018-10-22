@@ -94,7 +94,7 @@ if __name__ == "__main__":
         host.switch_to_rx()
         user_input = raw_input("Setup xfil tx and press enter to receive...")
         while True:
-            rx_data = host.recv_bytes()
+            rx_data = host.recv_bytes_timeout()
             if rx_data != rfm.DUMMY_PAYLOAD:
                 print "Received Bytes:",
                 print rx_data
