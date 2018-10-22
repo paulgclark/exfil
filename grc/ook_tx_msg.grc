@@ -105,7 +105,7 @@
     </param>
     <param>
       <key>value</key>
-      <value>433e6</value>
+      <value>913e6</value>
     </param>
   </block>
   <block>
@@ -116,7 +116,7 @@
     </param>
     <param>
       <key>value</key>
-      <value>432.5e6</value>
+      <value>912.5e6</value>
     </param>
     <param>
       <key>_enabled</key>
@@ -317,7 +317,7 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>True</value>
+      <value>0</value>
     </param>
     <param>
       <key>_coordinate</key>
@@ -334,6 +334,33 @@
     <param>
       <key>value</key>
       <value>"tcp://127.0.0.1:5557"</value>
+    </param>
+  </block>
+  <block>
+    <key>variable</key>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(688, 76)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>tcp_addr_test</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>"tcp://127.0.0.1:5561"</value>
     </param>
   </block>
   <block>
@@ -843,7 +870,7 @@
     </param>
     <param>
       <key>vector</key>
-      <value>(0,0,85,85,0,13,0,13,255,254,253,252,251,250,0,1,2,3,4,5,6,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0)</value>
+      <value>(0,0,85,85,0,14,0,14,255,254,253,252,251,250,0,1,2,3,4,5,6,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0)</value>
     </param>
   </block>
   <block>

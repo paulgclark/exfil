@@ -119,8 +119,6 @@ class RfParams():
 
     # take the command bytes and build a record from them
     def restore_from_cmd(self, cmd_bytes):
-        print "**********cmd_bytes",
-        print cmd_bytes
         self.sdr_hw = restore_from_scaled(cmd_bytes[0], S_NONE)
         self.samp_rate = restore_from_scaled(cmd_bytes[1], S_MEG)
         # we encoded center_freq in a special way (see above)
@@ -141,19 +139,19 @@ class RfParams():
 
 
     def print_vals(self):
-        print "SDR HW: {}".format(self.sdr_hw)
-        print "samp rate: {} MHz".format(self.samp_rate)
-        print "center freq: {} MHz".format(self.center_freq)
-        print "freq: {} MHz".format(self.freq)
-        print "chan width: {} kHz".format(self.channel_width)
-        print "trans width: {} kHz".format(self.transition_width)
-        print "mod scheme: {}".format(self.mod_scheme)
-        print "threshold: {}".format(self.threshold)
-        print "agc enable: {}".format(self.agc_enable)
+        print "SDR HW:        {}".format(self.sdr_hw)
+        print "samp rate:     {} MHz".format(self.samp_rate)
+        print "center freq:   {} MHz".format(self.center_freq)
+        print "freq:          {} MHz".format(self.freq)
+        print "chan width:    {} kHz".format(self.channel_width)
+        print "trans width:   {} kHz".format(self.transition_width)
+        print "mod scheme:    {}".format(self.mod_scheme)
+        print "threshold:     {}".format(self.threshold)
+        print "agc enable:    {}".format(self.agc_enable)
         print "fsk deviation: {} kHz".format(self.fsk_dev)
-        print "psk const #: {}".format(self.psk_const_num)
-        print "rx gain: {} dB".format(self.rx_gain)
-        print "tx gain: {} dB".format(self.tx_gain)
+        print "psk const #:   {}".format(self.psk_const_num)
+        print "rx gain:       {} dB".format(self.rx_gain)
+        print "tx gain:       {} dB".format(self.tx_gain)
 
 
 class BbParams():
@@ -192,12 +190,11 @@ class BbParams():
         self.encoding = restore_from_scaled(cmd_bytes[-2], S_NONE)
         self.symbol_time = restore_from_scaled(cmd_bytes[-1], S_SYMB_TIME)
 
-
     def print_vals(self):
         print "preamble: ",
         print self.preamble_bytes
-        print "encoding: {}".format(self.encoding)
-        print "symbol time: {} us".format(self.symbol_time)
+        print "encoding:      {}".format(self.encoding)
+        print "symbol time:   {} us".format(self.symbol_time)
 
 
 # converts an input float to an integer factor of the provided
@@ -207,6 +204,7 @@ def scale_to_int(input_val, scale_factor):
         return 1 if input_val else 0
     else:
         return int(1.0*input_val/scale_factor)
+
 
 # converts an input byte to the scaled float or int
 def restore_from_scaled(byte_val, scale_factor):

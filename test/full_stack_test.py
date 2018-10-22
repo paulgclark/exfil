@@ -63,7 +63,7 @@ if __name__ == "__main__":
             print "Transmission too short, no decoding attempted"
         else:
             # convert bytes into config vars
-            rf_params2_xfil.restore_from_cmd(rx_data[0:14])
+            rf_params2_xfil.restore_from_cmd(rx_data[0:13])
             rf_params2_xfil.print_vals()
             bb_params2_xfil.restore_from_cmd(rx_data[13:])
             bb_params2_xfil.print_vals()
@@ -73,8 +73,6 @@ if __name__ == "__main__":
 
     # now switch over to xfil mode, with xfil sending back data on
     # newly configured link
-    host.shutdown()
-    xfil.shutdown()
     host.switch_to_rx()
     xfil.switch_to_tx()
 
