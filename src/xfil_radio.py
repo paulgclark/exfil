@@ -9,6 +9,20 @@ sys.path.append('../src')
 import zmq_utils as zmu
 import rf_mgt as rfm
 import radio_stack as rs
+import argparse
+
+parser = argparse.ArgumentParser("Run host radio to get data from xfil unit")
+parser.add_argument("-s", "--sdr_hw", help="0-test, 1-uhd, 2-hackrf", type=int)
+parser.add_argument("-v", "--verbose", help="increase output verbosity",
+                    action="store_true")
+args = parser.parse_args()
+
+sdr_hw = rfm.HW_TEST if (args.sdr_hw is None) else args.sdr_hw
+verbose = False if (args.verbose is None) else bool(args.verbose)
+if verbose:
+    print "Command Line Args:"
+    print "  SDR Sel = {}".format(sdr_hw)
+    print "  Verbose = {}".format(verbose)
 
 xfil_data = [[3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5],
              [8, 6, 7, 5, 3, 0, 9],
@@ -22,10 +36,12 @@ xfil_data = [[3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5],
 if __name__ == "__main__":
     # build flowgraph config objects for the control channel
     rf_params = rfm.RfParams()
+    rf_params.sdr_hw = sdr_hw
     bb_params = rfm.BbParams()
 
     # create some param objects to hold the reconfiguration when it comes in
     tx_rf_params = rfm.RfParams()
+    tx_rf_params.sdr_hw = sdr_hw
     tx_bb_params = rfm.BbParams()
 
     # instance the xfil, using the default for both rx and tx

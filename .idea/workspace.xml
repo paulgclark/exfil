@@ -9,15 +9,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e9f2c8c0-d783-4360-88c3-2d2ebfa78261" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/xfil_radio.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/grc/ook_rx_msg.grc" beforeDir="false" afterPath="$PROJECT_DIR$/grc/ook_rx_msg.grc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/grc/ook_tx_msg.grc" beforeDir="false" afterPath="$PROJECT_DIR$/grc/ook_tx_msg.grc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/host_radio.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/host_radio.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/radio_stack.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/radio_stack.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/rf_mgt.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/rf_mgt.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/zmq_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/zmq_utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/host_client_full.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/host_client_full.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/rx_source.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/rx_source.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/rx_top.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/rx_top.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tx_out.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/tx_out.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tx_top.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/tx_top.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/xfil_radio.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/xfil_radio.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -37,25 +35,25 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="properties" value="1" />
-          <entry key="py" value="116" />
+          <entry key="py" value="123" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Python" value="111" />
+          <entry key="Python" value="118" />
           <entry key="Scratch" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="51" />
-          <entry key="py" value="43422" />
+          <entry key="py" value="44475" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="51" />
-          <entry key="Python" value="41929" />
+          <entry key="Python" value="42982" />
           <entry key="Scratch" value="1493" />
         </counts>
       </usages-collector>
@@ -68,7 +66,7 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/rf_mgt.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="611">
+                <state relative-caret-position="81">
                   <caret line="54" column="15" selection-start-line="54" selection-start-column="15" selection-end-line="54" selection-end-column="15" />
                   <folding>
                     <marker date="1540237209735" expanded="true" signature="1495:1496" ph="..." />
@@ -90,6 +88,15 @@
               </provider>
             </entry>
           </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/host_radio.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="459">
+                  <caret line="26" column="49" lean-forward="true" selection-start-line="14" selection-end-line="26" selection-end-column="49" />
+                </state>
+              </provider>
+            </entry>
+          </file>
         </leaf>
       </split-first>
       <split-second>
@@ -107,36 +114,36 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/radio_stack.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="920">
-                  <caret line="141" column="12" selection-start-line="141" selection-start-column="12" selection-end-line="141" selection-end-column="12" />
+                <state relative-caret-position="441">
+                  <caret line="69" column="23" lean-forward="true" selection-start-line="69" selection-start-column="23" selection-end-line="69" selection-end-column="23" />
                   <folding>
                     <element signature="e#102#112#0" expanded="true" />
-                    <marker date="1540234557560" expanded="true" signature="244:245" ph="..." />
+                    <marker date="1540239591873" expanded="true" signature="244:245" ph="..." />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/host_radio.py">
+            <entry file="file://$PROJECT_DIR$/src/rx_source.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="945">
-                  <caret line="83" column="67" selection-start-line="83" selection-start-column="67" selection-end-line="83" selection-end-column="67" />
+                <state relative-caret-position="675">
+                  <caret line="25" column="25" lean-forward="true" selection-start-line="25" selection-start-column="25" selection-end-line="25" selection-end-column="25" />
                   <folding>
-                    <element signature="e#19#29#0" expanded="true" />
+                    <element signature="e#78#98#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/xfil_radio.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="893">
-                  <caret line="93" column="30" lean-forward="true" selection-start-line="93" selection-start-column="30" selection-end-line="93" selection-end-column="30" />
+                <state relative-caret-position="812">
+                  <caret line="43" column="32" selection-start-line="43" selection-start-column="32" selection-end-line="43" selection-end-column="32" />
                   <folding>
                     <element signature="e#122#132#0" expanded="true" />
                   </folding>
@@ -174,6 +181,7 @@
       <find>tcp_addr</find>
       <find>bb_</find>
       <find>ver</find>
+      <find>sdr</find>
       <find>verbose</find>
     </findStrings>
   </component>
@@ -198,22 +206,22 @@
         <option value="$PROJECT_DIR$/test/tx_full_unit.py" />
         <option value="$PROJECT_DIR$/test/rx_tx_full_unit.py" />
         <option value="$PROJECT_DIR$/test/host_client_cmd.py" />
-        <option value="$PROJECT_DIR$/src/tx_out.py" />
-        <option value="$PROJECT_DIR$/src/rx_top.py" />
-        <option value="$PROJECT_DIR$/src/rx_source.py" />
         <option value="$PROJECT_DIR$/src/tx_source.py" />
         <option value="$PROJECT_DIR$/src/bb_sync.py" />
         <option value="$PROJECT_DIR$/src/xfil.py" />
-        <option value="$PROJECT_DIR$/src/tx_top.py" />
         <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch.py" />
         <option value="$PROJECT_DIR$/test/full_stack_test.py" />
         <option value="$PROJECT_DIR$/test/host_client_full.py" />
         <option value="$PROJECT_DIR$/src/host.py" />
-        <option value="$PROJECT_DIR$/src/radio_stack.py" />
         <option value="$PROJECT_DIR$/src/zmq_utils.py" />
+        <option value="$PROJECT_DIR$/src/rf_mgt.py" />
         <option value="$PROJECT_DIR$/src/host_radio.py" />
         <option value="$PROJECT_DIR$/src/xfil_radio.py" />
-        <option value="$PROJECT_DIR$/src/rf_mgt.py" />
+        <option value="$PROJECT_DIR$/src/radio_stack.py" />
+        <option value="$PROJECT_DIR$/src/rx_top.py" />
+        <option value="$PROJECT_DIR$/src/tx_out.py" />
+        <option value="$PROJECT_DIR$/src/tx_top.py" />
+        <option value="$PROJECT_DIR$/src/rx_source.py" />
       </list>
     </option>
   </component>
@@ -550,12 +558,12 @@
     <frame x="2587" y="90" width="2662" height="2070" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.12353164" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.12353164" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32938144" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.4" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.4" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.51958764" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -761,23 +769,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/rx_source.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="81">
-          <caret line="3" column="20" lean-forward="true" selection-start-line="3" selection-start-column="20" selection-end-line="3" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/rx_top.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="562">
-          <caret line="41" column="34" lean-forward="true" selection-start-line="41" selection-start-column="34" selection-end-line="41" selection-end-column="34" />
-          <folding>
-            <marker date="1540081966925" expanded="true" signature="422:428" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/tx_tuner.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="702">
@@ -788,31 +779,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/tx_out.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1269">
-          <caret line="47" column="18" lean-forward="true" selection-start-line="47" selection-start-column="18" selection-end-line="47" selection-end-column="18" />
-          <folding>
-            <element signature="e#259#279#0" expanded="true" />
-            <marker date="1540081849993" expanded="true" signature="439:444" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/tx_source.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="533">
           <caret line="31" column="21" selection-start-line="31" selection-start-column="21" selection-end-line="31" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/tx_top.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="945">
-          <caret line="35" selection-start-line="35" selection-end-line="35" />
-          <folding>
-            <element signature="e#200#224#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -865,13 +835,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/radio_stack.py">
+    <entry file="file://$PROJECT_DIR$/src/bb_sync.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="920">
-          <caret line="141" column="12" selection-start-line="141" selection-start-column="12" selection-end-line="141" selection-end-column="12" />
+        <state relative-caret-position="812">
+          <caret line="74" column="21" selection-start-line="74" selection-start-column="21" selection-end-line="74" selection-end-column="21" />
           <folding>
-            <element signature="e#102#112#0" expanded="true" />
-            <marker date="1540234557560" expanded="true" signature="244:245" ph="..." />
+            <element signature="e#434#457#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/exfil_host.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-864">
+          <caret line="10" column="20" lean-forward="true" selection-start-line="10" selection-start-column="20" selection-end-line="10" selection-end-column="20" />
+          <folding>
+            <element signature="e#18#42#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -889,21 +868,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/host_radio.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="945">
-          <caret line="83" column="67" selection-start-line="83" selection-start-column="67" selection-end-line="83" selection-end-column="67" />
-          <folding>
-            <element signature="e#19#29#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/bb_sync.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="812">
-          <caret line="74" column="21" selection-start-line="74" selection-start-column="21" selection-end-line="74" selection-end-column="21" />
-          <folding>
-            <element signature="e#434#457#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="459">
+          <caret line="26" column="49" lean-forward="true" selection-start-line="14" selection-end-line="26" selection-end-column="49" />
         </state>
       </provider>
     </entry>
@@ -917,33 +883,75 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/exfil_host.py">
+    <entry file="file://$PROJECT_DIR$/src/rf_mgt.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="10" column="20" lean-forward="true" selection-start-line="10" selection-start-column="20" selection-end-line="10" selection-end-column="20" />
+        <state relative-caret-position="81">
+          <caret line="54" column="15" selection-start-line="54" selection-start-column="15" selection-end-line="54" selection-end-column="15" />
           <folding>
-            <element signature="e#18#42#0" expanded="true" />
+            <marker date="1540237209735" expanded="true" signature="1495:1496" ph="..." />
+            <marker date="1540237209735" expanded="true" signature="6582:6685" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/xfil_radio.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="893">
-          <caret line="93" column="30" lean-forward="true" selection-start-line="93" selection-start-column="30" selection-end-line="93" selection-end-column="30" />
+        <state relative-caret-position="812">
+          <caret line="43" column="32" selection-start-line="43" selection-start-column="32" selection-end-line="43" selection-end-column="32" />
           <folding>
             <element signature="e#122#132#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/rf_mgt.py">
+    <entry file="file://$PROJECT_DIR$/src/rx_top.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="611">
-          <caret line="54" column="15" selection-start-line="54" selection-start-column="15" selection-end-line="54" selection-end-column="15" />
+        <state relative-caret-position="765">
+          <caret line="45" column="59" selection-start-line="45" selection-start-column="59" selection-end-line="45" selection-end-column="59" />
           <folding>
-            <marker date="1540237209735" expanded="true" signature="1495:1496" ph="..." />
-            <marker date="1540237209735" expanded="true" signature="6582:6685" ph="..." />
+            <marker date="1540239689857" expanded="true" signature="422:428" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tx_out.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret lean-forward="true" />
+          <folding>
+            <element signature="e#259#279#0" expanded="true" />
+            <marker date="1540239767428" expanded="true" signature="439:444" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tx_top.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1350">
+          <caret line="61" column="50" selection-start-line="61" selection-start-column="50" selection-end-line="61" selection-end-column="50" />
+          <folding>
+            <element signature="e#200#224#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/rx_source.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="675">
+          <caret line="25" column="25" lean-forward="true" selection-start-line="25" selection-start-column="25" selection-end-line="25" selection-end-column="25" />
+          <folding>
+            <element signature="e#78#98#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/radio_stack.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="441">
+          <caret line="69" column="23" lean-forward="true" selection-start-line="69" selection-start-column="23" selection-end-line="69" selection-end-column="23" />
+          <folding>
+            <element signature="e#102#112#0" expanded="true" />
+            <marker date="1540239591873" expanded="true" signature="244:245" ph="..." />
           </folding>
         </state>
       </provider>

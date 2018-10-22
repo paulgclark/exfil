@@ -11,7 +11,8 @@ class rx_source(gr.hier_block2):
 
     def __init__(self,
                  rf_params,
-                 tcp_test):
+                 tcp_test,
+                 sdr_sel):
         gr.hier_block2.__init__(
             self,
             "RX Source Block",
@@ -22,10 +23,11 @@ class rx_source(gr.hier_block2):
         # parameters
         self.rf_params = rf_params
         self.tcp_test = tcp_test
+        self.sdr_sel = sdr_sel
 
         # instantiate the IQ source
         ## use the ZeroMQ Pull Source for loopback connection to TX
-        if rf_params.sdr_hw == rfm.HW_TEST:
+        if self.sdr_sel == rfm.HW_TEST:
             self.src = zeromq.pull_source(
                 gr.sizeof_gr_complex,
                 1,
@@ -34,7 +36,7 @@ class rx_source(gr.hier_block2):
                 False,
                 -1)
 
-        elif rf_params.sdr_hw == rfm.HW_UHD:
+        elif self.sdr_sel == rfm.HW_UHD:
             self.src = uhd.usrp_source(
                 ",".join(("", "")),
                 uhd.stream_args(

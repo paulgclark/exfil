@@ -24,7 +24,8 @@ class RxTop(gr.top_block):
                  rf_params,
                  bb_params,
                  tcp_addr,
-                 tcp_test):
+                 tcp_test,
+                 sdr_sel=rfm.HW_TEST):
         gr.top_block.__init__(self, "rx_top")
 
         # parameters
@@ -32,6 +33,7 @@ class RxTop(gr.top_block):
         self.bb_params = bb_params
         self.tcp_addr = tcp_addr
         self.tcp_addr_test = tcp_test
+        self.sdr_sel = sdr_sel
 
         # variables
         self.samp_rate = rf_params.samp_rate
@@ -40,7 +42,8 @@ class RxTop(gr.top_block):
 
         # rf source
         self.src = rx_source.rx_source(rf_params=self.rf_params,
-                                       tcp_test=self.tcp_addr_test)
+                                       tcp_test=self.tcp_addr_test,
+                                       sdr_sel=self.sdr_sel)
 
         # tuner
         self.tuner = rx_tuner.RxTuner(rf_params=self.rf_params,

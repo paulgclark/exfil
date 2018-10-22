@@ -23,7 +23,8 @@ class TxTop(gr.top_block):
                  rf_params,
                  bb_params,
                  tcp_addr,
-                 tcp_test):
+                 tcp_test,
+                 sdr_sel=rfm.HW_TEST):
         gr.top_block.__init__(self, "tx_top")
 
         # parameters
@@ -31,6 +32,7 @@ class TxTop(gr.top_block):
         self.bb_params = bb_params
         self.tcp_addr = tcp_addr
         self.tcp_addr_test = tcp_test
+        self.sdr_sel = sdr_sel
 
         # variables
         self.samp_rate = rf_params.samp_rate
@@ -56,7 +58,8 @@ class TxTop(gr.top_block):
 
         # transmit output
         self.tx_out = tx_out.TxOut(rf_params=self.rf_params,
-                                   tcp_test=self.tcp_addr_test)
+                                   tcp_test=self.tcp_addr_test,
+                                   sdr_sel=sdr_sel)
         self.connect((self.tuner, 0), (self.tx_out))
 
         # keeps the iq data flowing regardless of zmq situation

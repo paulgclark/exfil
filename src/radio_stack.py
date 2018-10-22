@@ -15,7 +15,8 @@ class RadioStack():
                  rx_bb_params,
                  tx_rf_params,
                  tx_bb_params,
-                 tcp_params):
+                 tcp_params,
+                 sdr_sel = rfm.HW_TEST):
 
         # local variable copies
         self.rx_rf_params = rx_rf_params
@@ -25,6 +26,10 @@ class RadioStack():
         self.tcp = tcp_params
         self.verbose = False
 
+        # the sdr selection needs to stay the same
+        self.sdr_sel = sdr_sel
+
+        # create the zmq variables, assign as needed
         self.tx_zmq = None
         self.rx_zmq = None
         # open zmq socket for payload xfr to tx flowgraph
@@ -44,7 +49,8 @@ class RadioStack():
         self.fg_rx = rx_top.RxTop(rf_params=self.rx_rf_params,
                                   bb_params=self.rx_bb_params,
                                   tcp_addr=self.tcp.rx,
-                                  tcp_test=self.tcp.test_rx)
+                                  tcp_test=self.tcp.test_rx,
+                                  sdr_sel=self.sdr_sel)
 
         # open zmq socket for payload xfr from rx flowgraph
         self.rx_zmq = zmu.ZmqPullMsgSocket(self.tcp.rx)
@@ -61,7 +67,8 @@ class RadioStack():
         self.fg_tx = tx_top.TxTop(rf_params=self.tx_rf_params,
                                   bb_params=self.tx_bb_params,
                                   tcp_addr=self.tcp.tx,
-                                  tcp_test=self.tcp.test_tx)
+                                  tcp_test=self.tcp.test_tx,
+                                  sdr_sel=self.sdr_sel)
 
         # open zmq socket for payload xfr to tx flowgraph
         self.tx_zmq = zmu.ZmqPushMsgSocket(self.tcp.tx)
