@@ -43,8 +43,8 @@ if __name__ == "__main__":
 
     if verbose:
         print "Radio Config:"
-        rx_radio.rf_params.print_vals()
-        rx_radio.bb_params.print_vals()
+        rx_radio.rx_rf_params.print_vals()
+        rx_radio.rx_bb_params.print_vals()
 
     # main loop; just sits and waits to receive, then prints out strings
     while True:
