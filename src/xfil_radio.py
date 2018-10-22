@@ -50,7 +50,8 @@ if __name__ == "__main__":
                          rx_bb_params=bb_params,
                          tx_rf_params=rf_params,
                          tx_bb_params=bb_params,
-                         tcp_params=zmu.tcp_params_xfil)
+                         tcp_params=zmu.tcp_params_xfil,
+                         sdr_sel=sdr_hw)
 
     # master loop
     master_loop_index = 0

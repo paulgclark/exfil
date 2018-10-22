@@ -45,7 +45,8 @@ if __name__ == "__main__":
                          rx_bb_params=rx_bb_params,
                          tx_rf_params=tx_rf_params,
                          tx_bb_params=tx_bb_params,
-                         tcp_params=zmu.tcp_params_host)
+                         tcp_params=zmu.tcp_params_host,
+                         sdr_sel=sdr_hw)
 
     # main loop; each time through the host changes the params, sends them
     # to the xfil box and gets the xfil data back
