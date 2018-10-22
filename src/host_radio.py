@@ -45,7 +45,7 @@ if __name__ == "__main__":
 
             # process user input
             if user_input == 'f':
-                user_input2 = raw_input("Enter new frequency (912-914MHz):")
+                user_input2 = raw_input("Enter new frequency (912-914MHz): ")
                 if (912e6 < float(user_input2) < 914e6):
                     host.rx_rf_params.freq = float(user_input2)
             elif user_input == 'm':
@@ -53,7 +53,7 @@ if __name__ == "__main__":
                 if (1 <= user_input2 <= 2):
                     host.rx_rf_params.mod_scheme = int(user_input2)
             elif user_input == 'p':
-                user_input2 = raw_input("Enter 1[AAAA], 2[C3C3], 3[E77E]")
+                user_input2 = raw_input("Enter 1[AAAA], 2[C3C3], 3[E77E]: ")
                 if int(user_input2) == 1:
                     host.rx_bb_params.set_preamble([0xAA, 0xAA])
                 elif int(user_input2) == 2:
@@ -64,7 +64,7 @@ if __name__ == "__main__":
                 break
 
         # send control signal to xfil
-        print "Sending config data to xfil device"
+        print "Sending config data to xfil device..."
         host.switch_to_tx()
         for i in xrange(7):
             host.send_bytes(tx_bytes=rfm.DUMMY_PAYLOAD)
@@ -81,7 +81,7 @@ if __name__ == "__main__":
                 print "Received Bytes:",
                 print rx_data
 
-            user_input = raw_input("press q to terminate receiver")
+            user_input = raw_input("press q to terminate receiver: ")
             if user_input.lower() == "q":
                 break
 

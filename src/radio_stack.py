@@ -25,11 +25,13 @@ class RadioStack():
         self.tcp = tcp_params
         self.verbose = False
 
+        self.tx_zmq = None
+        self.rx_zmq = None
         # open zmq socket for payload xfr to tx flowgraph
-        self.tx_zmq = zmu.ZmqPushMsgSocket(self.tcp.tx)
+        #self.tx_zmq = zmu.ZmqPushMsgSocket(self.tcp.tx)
 
         # open zmq socket for payload xfr from rx flowgraph
-        self.rx_zmq = zmu.ZmqPullMsgSocket(self.tcp.rx)
+        #self.rx_zmq = zmu.ZmqPullMsgSocket(self.tcp.rx)
 
 
     # switch to receive mode, stopping tx flowgraph and starting
@@ -43,6 +45,10 @@ class RadioStack():
                                   bb_params=self.rx_bb_params,
                                   tcp_addr=self.tcp.rx,
                                   tcp_test=self.tcp.test_rx)
+
+        # open zmq socket for payload xfr from rx flowgraph
+        self.rx_zmq = zmu.ZmqPullMsgSocket(self.tcp.rx)
+
         self.fg_rx.start()
 
     # switch to transmit mode, stopping rx flowgraph and starting
@@ -56,6 +62,10 @@ class RadioStack():
                                   bb_params=self.tx_bb_params,
                                   tcp_addr=self.tcp.tx,
                                   tcp_test=self.tcp.test_tx)
+
+        # open zmq socket for payload xfr to tx flowgraph
+        self.tx_zmq = zmu.ZmqPushMsgSocket(self.tcp.tx)
+
         self.fg_tx.start()
 
     # update configuration for receive connection
@@ -125,3 +135,8 @@ class RadioStack():
     def shutdown(self):
         self.rx_shutdown()
         self.tx_shutdown()
+        # close sockets and destroy context
+        if self.tx_zmq is not None:
+            self.tx_zmq.close()
+        if self.rx_zmq is not None:
+            self.rx_zmq.close()

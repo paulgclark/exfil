@@ -50,11 +50,10 @@ DEF_ENCODING = ENC_NRZ
 DEF_SYMBOL_TIME = 100e-6
 
 # this payload is used to clear the zmq pipe, it is typically ignored
-DUMMY_PAYLOAD = [0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 0, 0]
 DUMMY_PAYLOAD = [1, 2, 3, 4, 5, 6, 7]
 # this is the number of identical commands required before it is acted on
-CMD_REP_REQ = 1
-TX_REP = 1
+CMD_REP_REQ = 2
+TX_REP = 10
 
 # use this value as a designator for the payload type (not implemented)
 #CMD_ID = 0xD7

@@ -410,11 +410,11 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>True</value>
+      <value>0</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(984, 68)</value>
+      <value>(984, 52)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -427,6 +427,33 @@
     <param>
       <key>value</key>
       <value>"tcp://127.0.0.1:5557"</value>
+    </param>
+  </block>
+  <block>
+    <key>variable</key>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(984, 116)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>tcp_addr_test</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>"tcp://127.0.0.1:5561"</value>
     </param>
   </block>
   <block>

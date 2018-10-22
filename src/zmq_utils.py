@@ -80,6 +80,13 @@ class ZmqPullMsgSocket():
         raw_data = self.receiver.recv()
         return zmq_msg_payload_to_bytes(raw_data)
 
+    def close(self):
+        if not self.receiver.closed:
+            self.receiver.setsockopt(zmq.LINGER, 0)
+            self.receiver.close()
+        if not self.context.closed:
+            self.context.destroy(0)
+
 
 # This function takes a raw message and extracts the payload as str
 def zmq_msg_payload_to_str(raw_msg):
@@ -178,3 +185,10 @@ class ZmqPushMsgSocket():
 
         byte_list = bytearray(in_str)
         self.send_framed_bytes(preamble, byte_list, verbose)
+
+    def close(self):
+        if not self.socket.closed:
+            self.socket.setsockopt(zmq.LINGER, 0)
+            self.socket.close()
+        if not self.context.closed:
+            self.context.destroy(0)
