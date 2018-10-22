@@ -33,6 +33,7 @@ class TxOut(gr.hier_block2):
 
         # variables
         self.samp_rate = rf_params.samp_rate
+        self.center_freq = rf_params.center_freq
         self.tx_gain = rf_params.tx_gain
 
         # choose the appropriate output
@@ -61,8 +62,8 @@ class TxOut(gr.hier_block2):
                         channels=range(1),
                 ),
             )
-            self.uhd_usrp_sink_0.set_samp_rate(self.samp_rate)
-            self.uhd_usrp_sink_0.set_center_freq(self.center_freq, 0)
-            self.uhd_usrp_sink_0.set_gain(self.tx_gain, 0)
-            self.uhd_usrp_sink_0.set_antenna('TX/RX', 0)
+            self.uhd_sink.set_samp_rate(self.samp_rate)
+            self.uhd_sink.set_center_freq(self.center_freq, 0)
+            self.uhd_sink.set_gain(self.tx_gain, 0)
+            self.uhd_sink.set_antenna('TX/RX', 0)
             self.connect((self, 0),  (self.uhd_sink))

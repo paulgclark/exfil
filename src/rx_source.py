@@ -45,7 +45,7 @@ class rx_source(gr.hier_block2):
                 ),
             )
             self.src.set_antenna('TX/RX', 0)
-            self.src.set_center_freq(rf_params.center_frequency, 0)
+            self.src.set_center_freq(rf_params.center_freq, 0)
             self.src.set_gain(rf_params.rx_gain, 0)
             self.src.set_samp_rate(rf_params.samp_rate)
 
