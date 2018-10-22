@@ -91,16 +91,18 @@ if __name__ == "__main__":
             host.send_uplink_config()
 
         # now reconfigure to receive data from xfil
+        time.sleep(2)
         host.switch_to_rx()
-        user_input = raw_input("Setup xfil tx and press enter to receive...")
-        while True:
+        #user_input = raw_input("Setup xfil tx and press enter to receive...")
+        #while True:
+        for i in xrange(5):
             rx_data = host.recv_bytes_timeout()
             if rx_data != rfm.DUMMY_PAYLOAD:
                 print "Received Bytes:",
                 print rx_data
 
-            user_input = raw_input("press q to terminate receiver: ")
-            if user_input.lower() == "q":
-                break
+            #user_input = raw_input("press q to terminate receiver: ")
+            #if user_input.lower() == "q":
+            #    break
 
 

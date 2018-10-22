@@ -161,6 +161,7 @@ class RadioStack():
             return_val = self.recv_bytes()
         except Exception, exc:
             return_val = []
+        signal.alarm(0)
         return return_val
 
     # to keep from operating tx and rx simultaneously
