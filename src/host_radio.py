@@ -11,6 +11,8 @@ import zmq_utils as zmu
 import rf_mgt as rfm
 import radio_stack as rs
 import argparse
+from collections import Counter
+from itertools import combinations
 
 parser = argparse.ArgumentParser("Run host radio to get data from xfil unit")
 parser.add_argument("-s", "--sdr_hw", help="0-test, 1-uhd, 2-hackrf", type=int)
@@ -50,11 +52,16 @@ if __name__ == "__main__":
 
     # main loop; each time through the host changes the params, sends them
     # to the xfil box and gets the xfil data back
+    payloads_received = []
     while True:
         # change the outgoing configuration per user command
         while True:
             # print the current config
             print(chr(27) + "[2J") # clear the screen first
+            print "Payloads Received:"
+            for i in xrange(len(payloads_received)):
+                print payloads_received[i]
+            print "\nCurrent RF and BB Params:"
             host.rx_rf_params.print_vals()
             host.rx_bb_params.print_vals()
             # prompt user for change
@@ -92,17 +99,23 @@ if __name__ == "__main__":
 
         # now reconfigure to receive data from xfil
         time.sleep(2)
+        print "Reconfiguring to receive from xfil..."
         host.switch_to_rx()
-        #user_input = raw_input("Setup xfil tx and press enter to receive...")
-        #while True:
+
+        good_payloads = []
         for i in xrange(5):
             rx_data = host.recv_bytes_timeout()
-            if rx_data != rfm.DUMMY_PAYLOAD:
-                print "Received Bytes:",
-                print rx_data
+            # if the payload is good, then add it to the list
+            if rx_data != [] and rx_data != rfm.DUMMY_PAYLOAD:
+                good_payloads.append(rx_data)
 
-            #user_input = raw_input("press q to terminate receiver: ")
-            #if user_input.lower() == "q":
-            #    break
+        # now find the most common payload and add it to the
+        # master list (later; for now just take the first one)
+        if len(good_payloads) > 0:
+            payloads_received.append(good_payloads[0])
+        else:
+            payloads_received.append(["No payload received"])
+
+
 
 
