@@ -11,7 +11,8 @@ import radio_stack as rs
 import argparse
 
 parser = argparse.ArgumentParser("Run simple receiver to get strings")
-parser.add_argument("-s", "--sdr_hw", help="0-test, 1-uhd, 2-hackrf", type=int)
+parser.add_argument("-s", "--sdr_hw",
+                    help="0-test, 1-uhd, 2-hackrf, 3-GFSK, 4-PSK", type=int)
 parser.add_argument("-m", "--mod", help="1-OOK, 2-GMSK", type=int)
 parser.add_argument("-v", "--verbose", help="increase output verbosity",
                     action="store_true")
