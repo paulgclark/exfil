@@ -37,11 +37,13 @@ if __name__ == "__main__":
     # build flowgraph config objects for the control channel
     rf_params = rfm.RfParams()
     rf_params.sdr_hw = sdr_hw
+    rf_params.freq_offset_corr = rfm.XFIL_FREQ_CORR  # corr for hackrf
     bb_params = rfm.BbParams()
 
     # create some param objects to hold the reconfiguration when it comes in
     tx_rf_params = rfm.RfParams()
     tx_rf_params.sdr_hw = sdr_hw
+    tx_rf_params.freq_offset_corr = rfm.XFIL_FREQ_CORR  # corr for hackrf
     tx_bb_params = rfm.BbParams()
 
     # instance the xfil, using the default for both rx and tx

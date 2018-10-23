@@ -35,6 +35,7 @@ class RxTuner(gr.hier_block2):
         self.center_freq = rf_params.center_freq
         self.freq = rf_params.freq
         self.channel_width = rf_params.channel_width
+        self.freq_offset_corr = rf_params.freq_offset_corr
         if rf_params.transition_width == 0:
             self.transition_width = rf_params.channel_width/5
         else:
@@ -55,7 +56,7 @@ class RxTuner(gr.hier_block2):
         self.xlating_fir = filter.freq_xlating_fir_filter_ccc(
             self.decimation,
             self.filter_taps,
-            self.freq-self.center_freq,
+            self.freq-self.center_freq-self.freq_offset_corr,
             self.samp_rate
         )
 

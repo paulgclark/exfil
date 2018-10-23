@@ -56,6 +56,7 @@ TX_REP = 10
 
 # miscellaneous values
 PWR_SQUELCH_DB = -50
+XFIL_FREQ_CORR = -3e3  # hand-measured offset of HackRF #13
 
 # use this value as a designator for the payload type (not implemented)
 #CMD_ID = 0xD7
@@ -77,6 +78,7 @@ class RfParams():
                  psk_const_num = DEF_PSK_CONST_NUM,
                  rx_gain = DEF_RX_GAIN,
                  tx_gain = DEF_TX_GAIN,
+                 freq_offset_corr = 0,
                  transition_width = 0
                  ):
         self.sdr_hw = sdr_hw
@@ -92,6 +94,8 @@ class RfParams():
         self.psk_const_num = psk_const_num
         self.rx_gain = rx_gain
         self.tx_gain = tx_gain
+        # these values is not part of the parameter upload
+        self.freq_offset_corr = freq_offset_corr
 
     # output command bytes corresponding to current values; the goal
     # is to convert each field into an integer ranging from 0-256
