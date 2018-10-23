@@ -52,7 +52,7 @@ class RxTop(gr.top_block):
 
         # demod
         if rf_params.mod_scheme == rfm.MOD_OOK:
-            self.mod_only = rx_ook_demod.rx_ook_demod(
+            self.mod_only = rx_ook_demod.RxOokDemod(
                 rf_params=self.rf_params,
                 bb_params=self.bb_params)
             self.connect((self.tuner, 0), (self.mod_only, 0))
@@ -60,9 +60,11 @@ class RxTop(gr.top_block):
                 bb_params=self.bb_params,
                 working_samp_rate=self.working_samp_rate)
             self.connect((self.mod_only, 0), (self.mod_sync, 0))
-        #elif rf_params.mod_scheme == rfm.MOD_FSK
-        #    self.mod_sync = rx_fsk_demod.rx_fsk_demod(rf_params)
-        #    self.connect((self.tuner, 0), (self.mod_only, 0))
+        elif rf_params.mod_scheme == rfm.MOD_GMSK:
+            self.mod_sync = rx_ook_demod.RxGmskDemod(
+                bb_params=self.bb_params,
+                working_samp_rate=self.working_samp_rate)
+            self.connect((self.tuner, 0), (self.mod_sync, 0))
 
         # preamble sync, packet construction and output via ZMQ
         self.packet_build = bb_sync.BuildPacketToZmq(

@@ -43,8 +43,8 @@ if __name__ == "__main__":
 
     if verbose:
         print "Radio Config:"
-        tx_radio.rf_params.print_vals()
-        tx_radio.bb_params.print_vals()
+        tx_radio.tx_rf_params.print_vals()
+        tx_radio.tx_bb_params.print_vals()
 
     # main loop; each time through you are asked for an input string,
     # which is then transmitted using the configured parameters

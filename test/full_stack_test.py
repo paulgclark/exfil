@@ -19,6 +19,7 @@ if __name__ == "__main__":
     # reconfig; default with change to freq and preamble
     rf_params2_host = rfm.RfParams()
     rf_params2_host.freq = 913.4e6
+    rf_params2_host.mod_scheme = rfm.MOD_GMSK
     bb_params2_host = rfm.BbParams()
     bb_params2_host.set_preamble([0xcc, 0x33])
 
@@ -44,11 +45,11 @@ if __name__ == "__main__":
     xfil.switch_to_rx()
 
     # priming the zmq receive socket (don't understand this fully...)
-    for i in xrange(10):
+    for i in xrange(6):
         host.send_bytes(tx_bytes=rfm.DUMMY_PAYLOAD)
 
     # send command several times
-    for i in xrange(7):
+    for i in xrange(8):
         time.sleep(0.1)
         # transmit the bytes
         host.send_uplink_config()
@@ -75,8 +76,11 @@ if __name__ == "__main__":
     # newly configured link
     host.switch_to_rx()
     xfil.switch_to_tx()
+    time.sleep(1)
 
     print "********Switchover********\n\n\n"
+    xfil.tx_rf_params.print_vals()
+    xfil.tx_bb_params.print_vals()
     xfil_data = [[3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5],
                  [8, 6, 7, 5, 3, 0, 9],
                  [10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0],
@@ -92,10 +96,10 @@ if __name__ == "__main__":
         time.sleep(0.1)
 
     # send string and byte data
-    for i in xrange(8):
+    for i in xrange(10):
         time.sleep(0.5)
         # transmit the bytes
-        xfil.send_bytes(xfil_data[i])
+        xfil.send_bytes(xfil_data[i%8])
         time.sleep(0.5)
         # receive the bytes
         rx_data = host.recv_bytes()

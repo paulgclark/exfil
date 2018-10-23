@@ -98,13 +98,16 @@ if __name__ == "__main__":
             host.send_uplink_config()
 
         # now reconfigure to receive data from xfil
-        time.sleep(2)
+        time.sleep(4)
         print "Reconfiguring to receive from xfil..."
         host.switch_to_rx()
 
         good_payloads = []
-        for i in xrange(5):
+        for i in xrange(7):
             rx_data = host.recv_bytes_timeout()
+            if verbose:
+                print "--- Raw Payload: ",
+                print rx_data
             # if the payload is good, then add it to the list
             if rx_data != [] and rx_data != rfm.DUMMY_PAYLOAD:
                 good_payloads.append(rx_data)

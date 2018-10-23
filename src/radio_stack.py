@@ -114,7 +114,7 @@ class RadioStack():
 
     # receives raw bytes from rx flowgraph via zmq; it then checks
     # the last byte, assuming that it contains an arithmetic checksum
-    def recv_bytes(self, verbose=True):
+    def recv_bytes(self, verbose=False):
         # wait for valid transmission
         raw_data = self.rx_zmq.poll_bytes(self.verbose)
 

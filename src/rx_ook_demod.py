@@ -16,7 +16,7 @@ from gnuradio import gr
 from gnuradio import blocks
 from gnuradio import digital
 
-class rx_ook_demod(gr.hier_block2):
+class RxOokDemod(gr.hier_block2):
 
     def __init__(self,
                  rf_params,
@@ -90,3 +90,46 @@ class rx_ook_demod(gr.hier_block2):
 
     def set_threshold(self, threshold):
         self.threshold = threshold
+
+
+class RxGmskDemod(gr.hier_block2):
+
+    def __init__(self,
+                 bb_params,
+                 working_samp_rate):
+        gr.hier_block2.__init__(
+            self,
+            "RX Demod Block",
+            gr.io_signature(1, 1, gr.sizeof_gr_complex*1), # single in
+            gr.io_signature(1, 1, gr.sizeof_char*1)       # single out
+        )
+
+        ##################################################
+        # Parameters
+        ##################################################
+        # ADD VALIDITY CHECKS TO EACH OF THESE
+        self.symbol_time = bb_params.symbol_time
+        self.working_samp_rate = working_samp_rate
+
+        ##################################################
+        # Variables
+        ##################################################
+        self.sps = int(self.symbol_time * self.working_samp_rate)
+
+        ##################################################
+        # Blocks
+        ##################################################
+        self.digital_gmsk_demod_0 = digital.gmsk_demod(
+            samples_per_symbol=self.sps,
+            gain_mu=0.175,
+            mu=0.5,
+            omega_relative_limit=0.005,
+            freq_error=0.0,
+            verbose=False,
+            log=False,
+        )
+        self.connect((self, 0), (self.digital_gmsk_demod_0, 0))
+
+        # output from block
+        self.connect((self.digital_gmsk_demod_0, 0), (self, 0))
+

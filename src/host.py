@@ -92,7 +92,7 @@ class hostClass():
             verbose=self.verbose)
 
     # same as recv_cmd in xfil; need to have a single class for this
-    def recv_bytes(self, verbose=True):
+    def recv_bytes(self, verbose=False):
         # wait for valid transmission
         raw_data = self.rx_zmq.poll_bytes(self.verbose)
 

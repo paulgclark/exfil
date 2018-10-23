@@ -47,10 +47,11 @@ class TxTop(gr.top_block):
         if rf_params.mod_scheme == rfm.MOD_OOK:
             self.mod = tx_ook_mod.TxOokMod(rf_params=self.rf_params,
                                            bb_params=self.bb_params)
-            self.connect((self.bb_src, 0), (self.mod, 0))
-        #elif rf_params.mod_scheme == rfm.MOD_FSK
-        #    self.mod_sync = rx_fsk_demod.rx_fsk_demod(rf_params)
-        #    self.connect((self.tuner, 0), (self.mod_only, 0))
+        elif rf_params.mod_scheme == rfm.MOD_GMSK:
+            self.mod = tx_ook_mod.TxGmskMod(rf_params=self.rf_params,
+                                            bb_params=self.bb_params)
+        self.connect((self.bb_src, 0), (self.mod, 0))
+
 
         # tuner
         self.tuner = tx_tuner.TxTuner(rf_params=self.rf_params)

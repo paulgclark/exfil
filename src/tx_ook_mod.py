@@ -68,3 +68,40 @@ class TxOokMod(gr.hier_block2):
 
         # send to hier block output
         self.connect((self.blocks_float_to_complex_0, 0), (self, 0))
+
+
+class TxGmskMod(gr.hier_block2):
+    def __init__(self, rf_params, bb_params):
+        gr.hier_block2.__init__(
+            self,
+            "TX Mod Block",
+            gr.io_signature(1, 1, gr.sizeof_char * 1),
+            gr.io_signature(1, 1, gr.sizeof_gr_complex * 1)
+        )
+
+        ##################################################
+        # Parameters
+        ##################################################
+        # ADD VALIDITY CHECKS TO EACH OF THESE
+        self.samp_rate = rf_params.samp_rate
+        self.symbol_time = bb_params.symbol_time
+
+        ##################################################
+        # Variables
+        ##################################################
+        self.sps = int(self.samp_rate*self.symbol_time)
+
+        ##################################################
+        # Blocks
+        ##################################################
+        # convert to unpacked
+        self.digital_gmsk_mod_0 = digital.gmsk_mod(
+            samples_per_symbol=self.sps,
+            bt=0.35,
+            verbose=False,
+            log=False,
+        )
+        self.connect((self,0), (self.digital_gmsk_mod_0, 0))
+
+        # send to hier block output
+        self.connect((self.digital_gmsk_mod_0, 0), (self, 0))
