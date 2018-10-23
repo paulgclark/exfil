@@ -12,15 +12,18 @@ import argparse
 
 parser = argparse.ArgumentParser("Run simple receiver to get strings")
 parser.add_argument("-s", "--sdr_hw", help="0-test, 1-uhd, 2-hackrf", type=int)
+parser.add_argument("-m", "--mod", help="1-OOK, 2-GMSK", type=int)
 parser.add_argument("-v", "--verbose", help="increase output verbosity",
                     action="store_true")
 args = parser.parse_args()
 
 sdr_hw = rfm.HW_TEST if (args.sdr_hw is None) else args.sdr_hw
+mod_scheme = rfm.MOD_OOK if (args.mod is None) else args.mod
 verbose = False if (args.verbose is None) else bool(args.verbose)
 if verbose:
     print "Command Line Args:"
     print "  SDR Sel = {}".format(sdr_hw)
+    print "  Mod Scheme = {}".format(mod_scheme)
     print "  Verbose = {}".format(verbose)
     temp = raw_input("press any key to continue")
 
@@ -28,6 +31,7 @@ if __name__ == "__main__":
     # build flowgraph config objects using defaults
     # to change these, simply assign fields to you chosen values
     rf_params = rfm.RfParams()
+    rf_params.mod_scheme = mod_scheme
     bb_params = rfm.BbParams()
 
     # instance a radio (this is a half-duplex transceiver, but we'll
