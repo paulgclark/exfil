@@ -94,7 +94,7 @@ class TxGmskMod(gr.hier_block2):
         ##################################################
         # Blocks
         ##################################################
-        # convert to unpacked
+        # just the modulator
         self.digital_gmsk_mod_0 = digital.gmsk_mod(
             samples_per_symbol=self.sps,
             bt=0.35,
@@ -105,3 +105,84 @@ class TxGmskMod(gr.hier_block2):
 
         # send to hier block output
         self.connect((self.digital_gmsk_mod_0, 0), (self, 0))
+
+
+class TxGfskMod(gr.hier_block2):
+    def __init__(self, rf_params, bb_params):
+        gr.hier_block2.__init__(
+            self,
+            "TX Mod Block",
+            gr.io_signature(1, 1, gr.sizeof_char * 1),
+            gr.io_signature(1, 1, gr.sizeof_gr_complex * 1)
+        )
+
+        ##################################################
+        # Parameters
+        ##################################################
+        # ADD VALIDITY CHECKS TO EACH OF THESE
+        self.samp_rate = rf_params.samp_rate
+        self.fsk_dev = rf_params.fsk_dev
+        self.symbol_time = bb_params.symbol_time
+
+        ##################################################
+        # Variables
+        ##################################################
+        self.sps = int(self.samp_rate*self.symbol_time)
+        self.sensitivity = 2*3.1415*self.fsk_dev/self.samp_rate
+
+        ##################################################
+        # Blocks
+        ##################################################
+        # just the modulator
+        self.digital_gfsk_mod_0 = digital.gfsk_mod(
+            samples_per_symbol=self.sps,
+            sensitivity=self.sensitivity,
+            bt=0.35,
+            verbose=False,
+            log=False,
+        )
+        self.connect((self,0), (self.digital_gfsk_mod_0, 0))
+
+        # send to hier block output
+        self.connect((self.digital_gfsk_mod_0, 0), (self, 0))
+
+
+class TxPskMod(gr.hier_block2):
+    def __init__(self, rf_params, bb_params):
+        gr.hier_block2.__init__(
+            self,
+            "TX Mod Block",
+            gr.io_signature(1, 1, gr.sizeof_char * 1),
+            gr.io_signature(1, 1, gr.sizeof_gr_complex * 1)
+        )
+
+        ##################################################
+        # Parameters
+        ##################################################
+        # ADD VALIDITY CHECKS TO EACH OF THESE
+        self.samp_rate = rf_params.samp_rate
+        self.psk_const_num = rf_params.psk_const_num
+        self.symbol_time = bb_params.symbol_time
+
+        ##################################################
+        # Variables
+        ##################################################
+        self.sps = int(self.samp_rate*self.symbol_time)
+
+        ##################################################
+        # Blocks
+        ##################################################
+        # just the modulator
+        self.digital_psk_mod_0 = digital.psk.psk_mod(
+            constellation_points=self.psk_const_num,
+            mod_code="gray",
+            differential=True,
+            samples_per_symbol=self.sps,
+            excess_bw=0.35,
+            verbose=False,
+            log=False,
+        )
+        self.connect((self,0), (self.digital_psk_mod_0, 0))
+
+        # send to hier block output
+        self.connect((self.digital_psk_mod_0, 0), (self, 0))

@@ -10,9 +10,8 @@ HW_HACKRF = 2
 MOD_ZMQ_TEST = 0
 MOD_OOK = 1
 MOD_GMSK = 2
-# the following are not supported
 MOD_GFSK = 3
-MOD_DPSK = 4
+MOD_PSK = 4
 
 ENC_NRZ = 1
 # the following are not supported
@@ -41,9 +40,9 @@ DEF_MOD_SCHEME = MOD_OOK
 DEF_THRESHOLD = 0.5
 DEF_AGC_ENABLE = True
 DEF_FSK_DEV = 40e3
-DEF_PSK_CONST_NUM = 0
+DEF_PSK_CONST_NUM = 2
 DEF_RX_GAIN = 40
-DEF_TX_GAIN = 50
+DEF_TX_GAIN = 60
 # defaults for bb params
 DEF_PREAMBLE_BYTES = [0x55, 0x55]
 DEF_ENCODING = ENC_NRZ
@@ -54,6 +53,9 @@ DUMMY_PAYLOAD = [1, 2, 3, 4, 5, 6, 7]
 # this is the number of identical commands required before it is acted on
 CMD_REP_REQ = 2
 TX_REP = 10
+
+# miscellaneous values
+PWR_SQUELCH_DB = -50
 
 # use this value as a designator for the payload type (not implemented)
 #CMD_ID = 0xD7

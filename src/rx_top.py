@@ -65,6 +65,18 @@ class RxTop(gr.top_block):
                 bb_params=self.bb_params,
                 working_samp_rate=self.working_samp_rate)
             self.connect((self.tuner, 0), (self.mod_sync, 0))
+        elif rf_params.mod_scheme == rfm.MOD_GFSK:
+            self.mod_sync = rx_ook_demod.RxGfskDemod(
+                rf_params=self.rf_params,
+                bb_params=self.bb_params,
+                working_samp_rate=self.working_samp_rate)
+            self.connect((self.tuner, 0), (self.mod_sync, 0))
+        elif rf_params.mod_scheme == rfm.MOD_PSK:
+            self.mod_sync = rx_ook_demod.RxPskDemod(
+                rf_params=self.rf_params,
+                bb_params=self.bb_params,
+                working_samp_rate=self.working_samp_rate)
+            self.connect((self.tuner, 0), (self.mod_sync, 0))
 
         # preamble sync, packet construction and output via ZMQ
         self.packet_build = bb_sync.BuildPacketToZmq(

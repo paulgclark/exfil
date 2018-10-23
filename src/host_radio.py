@@ -74,8 +74,8 @@ if __name__ == "__main__":
                 if (912e6 < float(user_input2) < 914e6):
                     host.rx_rf_params.freq = float(user_input2)
             elif user_input == 'm':
-                user_input2 = raw_input("Enter 1 for OOK, 2 for FSK: ")
-                if (1 <= user_input2 <= 2):
+                user_input2 = raw_input("Enter 1 for OOK, 2 for GMSK, 3 for FSK: ")
+                if (1 <= int(user_input2) <= 3):
                     host.rx_rf_params.mod_scheme = int(user_input2)
             elif user_input == 'p':
                 user_input2 = raw_input("Enter 1[AAAA], 2[C3C3], 3[E77E]: ")

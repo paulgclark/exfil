@@ -19,7 +19,9 @@ if __name__ == "__main__":
     # reconfig; default with change to freq and preamble
     rf_params2_host = rfm.RfParams()
     rf_params2_host.freq = 913.4e6
-    rf_params2_host.mod_scheme = rfm.MOD_GMSK
+    #rf_params2_host.mod_scheme = rfm.MOD_GMSK
+    rf_params2_host.mod_scheme = rfm.MOD_GFSK
+    #rf_params2_host.mod_scheme = rfm.MOD_PSK
     bb_params2_host = rfm.BbParams()
     bb_params2_host.set_preamble([0xcc, 0x33])
 

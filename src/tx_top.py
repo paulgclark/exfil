@@ -50,6 +50,12 @@ class TxTop(gr.top_block):
         elif rf_params.mod_scheme == rfm.MOD_GMSK:
             self.mod = tx_ook_mod.TxGmskMod(rf_params=self.rf_params,
                                             bb_params=self.bb_params)
+        elif rf_params.mod_scheme == rfm.MOD_GFSK:
+            self.mod = tx_ook_mod.TxGfskMod(rf_params=self.rf_params,
+                                            bb_params=self.bb_params)
+        elif rf_params.mod_scheme == rfm.MOD_PSK:
+            self.mod = tx_ook_mod.TxPskMod(rf_params=self.rf_params,
+                                            bb_params=self.bb_params)
         self.connect((self.bb_src, 0), (self.mod, 0))
 
 
