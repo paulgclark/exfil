@@ -56,7 +56,7 @@ TX_REP = 10
 
 # miscellaneous values
 PWR_SQUELCH_DB = -50
-XFIL_FREQ_CORR = -3e3  # hand-measured offset of HackRF #13
+XFIL_FREQ_CORR = -1e3  # hand-measured offset of HackRF #13
 
 # use this value as a designator for the payload type (not implemented)
 #CMD_ID = 0xD7
