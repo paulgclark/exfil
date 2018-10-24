@@ -64,10 +64,10 @@ if __name__ == "__main__":
         while True:
             # print the current config
             print(chr(27) + "[2J") # clear the screen first
-            print "Payloads Received:"
+            print "Payloads Received:\n******************"
             for i in xrange(len(payloads_received)):
                 print payloads_received[i]
-            print "\nCurrent RF and BB Params:"
+            print "\n\nCurrent RF and BB Params:"
             host.rx_rf_params.print_vals()
             host.rx_bb_params.print_vals()
             # prompt user for change
@@ -124,7 +124,7 @@ if __name__ == "__main__":
         if len(good_payloads) > 0:
             payloads_received.append(good_payloads[0])
         else:
-            payloads_received.append(["No payload received"])
+            payloads_received.append("-- No payload received --")
 
 
 

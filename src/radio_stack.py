@@ -165,10 +165,10 @@ class RadioStack():
         return return_val
 
     # same as above but with strings
-    def recv_str_timeout(self, timeout=10, verbose=False):
+    def recv_str_timeout(self, timeout=2, verbose=False):
         # define a signal that implements the timeout alarm
         signal.signal(signal.SIGALRM, self.handler)
-        signal.alarm(10)
+        signal.alarm(timeout)
         try:
             return_val = self.recv_str(verbose=verbose)
         except Exception, exc:
