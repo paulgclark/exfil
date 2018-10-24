@@ -170,7 +170,7 @@ class RadioStack():
         signal.signal(signal.SIGALRM, self.handler)
         signal.alarm(10)
         try:
-            return_val = self.recv_str()
+            return_val = self.recv_str(verbose=verbose)
         except Exception, exc:
             return_val = []
         signal.alarm(0)

@@ -23,9 +23,9 @@ args = parser.parse_args()
 
 sdr_hw = rfm.HW_TEST if (args.sdr_hw is None) else args.sdr_hw
 if (args.tx_gain is None) or not(0<=args.tx_gain<=70):
-    tx_gain = args.tx_gain
-else:
     tx_gain = rfm.DEF_TX_GAIN
+else:
+    tx_gain = float(args.tx_gain)
 verbose = False if (args.verbose is None) else bool(args.verbose)
 if verbose:
     print "Command Line Args:"
@@ -109,14 +109,15 @@ if __name__ == "__main__":
         host.switch_to_rx()
 
         good_payloads = []
-        for i in xrange(7):
+        for i in xrange(10):
             rx_data = host.recv_str_timeout()
-            if verbose:
+            if True: #verbose:
                 print "--- Raw Payload: ",
                 print rx_data
             # if the payload is good, then add it to the list
-            if rx_data != [] and rx_data != rfm.DUMMY_PAYLOAD_STR:
+            if len(rx_data) > 0  and rx_data != rfm.DUMMY_PAYLOAD_STR:
                 good_payloads.append(rx_data)
+        print good_payloads
 
         # now find the most common payload and add it to the
         # master list (later; for now just take the first one)

@@ -61,6 +61,7 @@ if __name__ == "__main__":
         xfil.switch_to_rx()
 
         cmd_count = 0
+        bad_cmd_cnt = 0
         last_cmd = []
         while True:
             cmd = xfil.recv_bytes()
@@ -86,26 +87,34 @@ if __name__ == "__main__":
                     break
             else:
                 print "CMD too short, len={}".format(len(cmd))
+                bad_cmd_cnt += 1
+
+            # if we are in a bad state, restart the flowgraph
+            if bad_cmd_cnt > 6:
+                break
 
         # wait until the host finishes up
         time.sleep(5)
 
-        print "Transmit mode enabled..."
-        # now configure for transmit and send the payload data
-        xfil.switch_to_tx()
+        if bad_cmd_cnt > 6:
+            print "Too many bad commands, restarting rx flowgraph..."
+        else:
+            print "Transmit mode enabled..."
+            # now configure for transmit and send the payload data
+            xfil.switch_to_tx()
 
-        # prime the pump
-        for i in xrange(6):
-            xfil.send_str(tx_str=rfm.DUMMY_PAYLOAD_STR)
-            time.sleep(0.1)
+            # prime the pump
+            for i in xrange(6):
+                xfil.send_str(tx_str=rfm.DUMMY_PAYLOAD_STR)
+                time.sleep(0.1)
 
-        # send the byte data
-        for i in xrange(rfm.TX_REP):
-            time.sleep(0.1)
-            xfil.send_str(tx_str=xfil_data[master_loop_index])
-            time.sleep(0.1)
+            # send the byte data
+            for i in xrange(rfm.TX_REP):
+                time.sleep(0.1)
+                xfil.send_str(tx_str=xfil_data[master_loop_index])
+                time.sleep(0.1)
 
-        # go back to listening mode
-        print "Done with xfil tx, returning to listen mode..."
-        master_loop_index += 1
+            # go back to listening mode
+            print "Done with xfil tx, returning to listen mode..."
+            master_loop_index += 1
 
