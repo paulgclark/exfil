@@ -164,6 +164,18 @@ class RadioStack():
         signal.alarm(0)
         return return_val
 
+    # same as above but with strings
+    def recv_str_timeout(self, timeout=10, verbose=False):
+        # define a signal that implements the timeout alarm
+        signal.signal(signal.SIGALRM, self.handler)
+        signal.alarm(10)
+        try:
+            return_val = self.recv_str()
+        except Exception, exc:
+            return_val = []
+        signal.alarm(0)
+        return return_val
+
     # to keep from operating tx and rx simultaneously
     def rx_shutdown(self):
         if 'fg_rx' in vars(self):

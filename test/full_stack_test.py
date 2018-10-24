@@ -20,8 +20,8 @@ if __name__ == "__main__":
     rf_params2_host = rfm.RfParams()
     rf_params2_host.freq = 913.4e6
     #rf_params2_host.mod_scheme = rfm.MOD_GMSK
-    rf_params2_host.mod_scheme = rfm.MOD_GFSK
-    #rf_params2_host.mod_scheme = rfm.MOD_PSK
+    #rf_params2_host.mod_scheme = rfm.MOD_GFSK
+    rf_params2_host.mod_scheme = rfm.MOD_PSK
     bb_params2_host = rfm.BbParams()
     bb_params2_host.set_preamble([0xcc, 0x33])
 
@@ -83,33 +83,29 @@ if __name__ == "__main__":
     print "********Switchover********\n\n\n"
     xfil.tx_rf_params.print_vals()
     xfil.tx_bb_params.print_vals()
-    xfil_data = [[3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5],
-                 [8, 6, 7, 5, 3, 0, 9],
-                 [10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0],
-                 [255, 0, 254, 1, 253, 2, 252, 3, 251, 4, 250, 5],
-                 [3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5],
-                 [8, 6, 7, 5, 3, 0, 9],
-                 [10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0],
-                 [255, 0, 254, 1, 253, 2, 252, 3, 251, 4, 250, 5]]
+    # read text into a list of lines; each of these lines will be a payload
+    # for the xfil box to send upstream to the host
+    with open("../src/raven.txt") as f:
+        xfil_data = f.readlines()
+    xfil_data = [x.strip() for x in xfil_data]
 
     # prime the pump
     for i in xrange(6):
-        xfil.send_bytes(tx_bytes=rfm.DUMMY_PAYLOAD)
+        xfil.send_str(tx_str=rfm.DUMMY_PAYLOAD_STR)
         time.sleep(0.1)
 
     # send string and byte data
-    for i in xrange(10):
-        time.sleep(0.5)
+    for i in xrange(30):
+        time.sleep(0.1)
         # transmit the bytes
-        xfil.send_bytes(xfil_data[i%8])
-        time.sleep(0.5)
+        xfil.send_str(xfil_data[i])
+        time.sleep(0.1)
         # receive the bytes
-        rx_data = host.recv_bytes()
-        if rx_data == rfm.DUMMY_PAYLOAD:
+        rx_data = host.recv_str()
+        if rx_data == rfm.DUMMY_PAYLOAD_STR:
             print "Got dummy payload"
         else:
-            print "Received bytes:",
-            print "len {}: ".format(len(rx_data)),
+            print "Received (len {}): ".format(len(rx_data)),
             print rx_data
 
 

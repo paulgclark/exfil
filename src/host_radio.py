@@ -16,11 +16,16 @@ from itertools import combinations
 
 parser = argparse.ArgumentParser("Run host radio to get data from xfil unit")
 parser.add_argument("-s", "--sdr_hw", help="0-test, 1-uhd, 2-hackrf", type=int)
+parser.add_argument("-g", "--tx_gain", help="tx gain (0-70)", type=int)
 parser.add_argument("-v", "--verbose", help="increase output verbosity",
                     action="store_true")
 args = parser.parse_args()
 
 sdr_hw = rfm.HW_TEST if (args.sdr_hw is None) else args.sdr_hw
+if (args.tx_gain is None) or not(0<=args.tx_gain<=70):
+    tx_gain = args.tx_gain
+else:
+    tx_gain = rfm.DEF_TX_GAIN
 verbose = False if (args.verbose is None) else bool(args.verbose)
 if verbose:
     print "Command Line Args:"
@@ -32,6 +37,7 @@ if __name__ == "__main__":
     # build flowgraph config objects using defaults
     tx_rf_params = rfm.RfParams()
     tx_rf_params.sdr_hw = sdr_hw
+    tx_rf_params.tx_gain = tx_gain
     tx_bb_params = rfm.BbParams()
 
     # setup a second set of params that we will change and then
@@ -104,12 +110,12 @@ if __name__ == "__main__":
 
         good_payloads = []
         for i in xrange(7):
-            rx_data = host.recv_bytes_timeout()
+            rx_data = host.recv_str_timeout()
             if verbose:
                 print "--- Raw Payload: ",
                 print rx_data
             # if the payload is good, then add it to the list
-            if rx_data != [] and rx_data != rfm.DUMMY_PAYLOAD:
+            if rx_data != [] and rx_data != rfm.DUMMY_PAYLOAD_STR:
                 good_payloads.append(rx_data)
 
         # now find the most common payload and add it to the

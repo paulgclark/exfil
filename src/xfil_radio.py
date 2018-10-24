@@ -24,14 +24,11 @@ if verbose:
     print "  SDR Sel = {}".format(sdr_hw)
     print "  Verbose = {}".format(verbose)
 
-xfil_data = [[3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5],
-             [8, 6, 7, 5, 3, 0, 9],
-             [10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0],
-             [255, 0, 254, 1, 253, 2, 252, 3, 251, 4, 250, 5],
-             [3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5],
-             [8, 6, 7, 5, 3, 0, 9],
-             [10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0],
-             [255, 0, 254, 1, 253, 2, 252, 3, 251, 4, 250, 5]]
+# read text into a list of lines; each of these lines will be a payload
+# for the xfil box to send upstream to the host
+with open("raven.txt") as f:
+    xfil_data = f.readlines()
+xfil_data = [x.strip() for x in xfil_data]
 
 if __name__ == "__main__":
     # build flowgraph config objects for the control channel
@@ -99,13 +96,13 @@ if __name__ == "__main__":
 
         # prime the pump
         for i in xrange(6):
-            xfil.send_bytes(tx_bytes=rfm.DUMMY_PAYLOAD)
+            xfil.send_str(tx_str=rfm.DUMMY_PAYLOAD_STR)
             time.sleep(0.1)
 
         # send the byte data
         for i in xrange(rfm.TX_REP):
             time.sleep(0.1)
-            xfil.send_bytes(tx_bytes=xfil_data[master_loop_index])
+            xfil.send_str(tx_str=xfil_data[master_loop_index])
             time.sleep(0.1)
 
         # go back to listening mode

@@ -2,9 +2,11 @@
   <dictionary name="paul">
     <words>
       <w>baseband</w>
+      <w>demod</w>
       <w>recv</w>
       <w>samp</w>
       <w>uplink</w>
+      <w>xfil</w>
       <w>zmq</w>
     </words>
   </dictionary>

@@ -50,6 +50,7 @@ DEF_SYMBOL_TIME = 100e-6
 
 # this payload is used to clear the zmq pipe, it is typically ignored
 DUMMY_PAYLOAD = [1, 2, 3, 4, 5, 6, 7]
+DUMMY_PAYLOAD_STR = "dummy payload"
 # this is the number of identical commands required before it is acted on
 CMD_REP_REQ = 2
 TX_REP = 10

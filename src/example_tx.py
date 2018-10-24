@@ -14,12 +14,17 @@ parser = argparse.ArgumentParser("Run simple transmitter to send strings")
 parser.add_argument("-s", "--sdr_hw", help="0-test, 1-uhd, 2-hackrf", type=int)
 parser.add_argument("-m", "--mod",
                     help="1-OOK, 2-GMSK, 3-GFSK, 4-PSK", type=int)
+parser.add_argument("-g", "--tx_gain", help="tx gain (0-70)", type=int)
 parser.add_argument("-v", "--verbose", help="increase output verbosity",
                     action="store_true")
 args = parser.parse_args()
 
 sdr_hw = rfm.HW_TEST if (args.sdr_hw is None) else args.sdr_hw
 mod_scheme = rfm.MOD_OOK if (args.mod is None) else args.mod
+if (args.tx_gain is None) or not(0<=args.tx_gain<=70):
+    tx_gain = args.tx_gain
+else:
+    tx_gain = rfm.DEF_TX_GAIN
 verbose = False if (args.verbose is None) else bool(args.verbose)
 if verbose:
     print "Command Line Args:"
@@ -33,6 +38,7 @@ if __name__ == "__main__":
     # to change these, simply assign fields to you chosen values
     rf_params = rfm.RfParams()
     rf_params.mod_scheme = mod_scheme
+    rf_params.tx_gain = tx_gain
     bb_params = rfm.BbParams()
 
     # instance a radio (this is a half-duplex transceiver, but we'll
